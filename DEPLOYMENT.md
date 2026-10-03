@@ -1,102 +1,98 @@
-# 🚀 Agent Naser PRO — Deployment Guide (Render.com, GitHub & VPS)
+# 🚀 Agent Naser PRO — Cloud Deployment Guide (Render.com, GitHub & VPS)
 
-এই নির্দেশিকাটি অনুসরণ করে আপনি খুব সহজেই **Agent Naser PRO** সম্পূর্ণ প্ল্যাটফর্মটিকে GitHub-এ আপলোড করে **Render.com**, **Railway.app** অথবা যেকোনো **Cloud VPS**-এ ৫ মিনিটে লাইভ করতে পারবেন।
+This comprehensive guide walks you through deploying **Agent Naser PRO** to **Render.com**, **Railway.app**, or any **Cloud VPS** in under 5 minutes using GitHub.
 
 ---
 
-## 📁 প্রজেক্টের ফাইল স্ট্রাকচার (Cloud Ready)
+## 📁 Cloud-Ready Repository Structure
 
-```
-backlink-agent/
-├── package.json          # Node.js dependencies & scripts (Express, CORS)
-├── server.js             # Production-Ready Node.js Express Server
-├── server.ps1            # Local Windows PowerShell Server (Zero-install)
-├── render.yaml           # Render.com Blueprint (1-Click Zero Config Deploy)
-├── netlify.toml          # Netlify Frontend Redirects
+```text
+agent-naser-pro/
+├── package.json          # Node.js dependencies & start scripts (Express, CORS)
+├── server.js             # Production-Ready Node.js Express Backend
+├── server.ps1            # Local Windows PowerShell Server
+├── render.yaml           # Render.com Blueprint (Zero-Config 1-Click Deploy)
+├── netlify.toml          # Netlify Frontend Redirects & Proxy Rules
 ├── .gitignore            # Git exclusion rules
+├── LICENSE               # Commercial Software License
+├── README.md             # Project & Benefits Documentation
+├── DEPLOYMENT.md         # Deployment Guide
 ├── data/
-│   └── database.json     # Persistent database (Campaign, Users, Links, Tasks)
-├── public/
-│   ├── index.html        # Complete SaaS Dashboard UI
-│   ├── style.css         # Modern SaaS CSS & Print styles
-│   ├── app.js            # Frontend Orchestration & API Connector
-│   ├── login.html        # Client & Admin Login Portal
-│   └── agent_naser.jpg   # Agent Naser Avatar Asset
-└── README.md
+│   └── database.json     # Persistent Database (Campaigns, Users, Backlinks, DB)
+└── public/
+    ├── index.html        # Complete SaaS Dashboard UI
+    ├── style.css         # Modern SaaS CSS & Print Styles
+    ├── app.js            # Frontend Client Engine & Anti-Theft Protection
+    ├── login.html        # Client & Admin Login Portal
+    ├── agent_naser.jpg   # Brand Avatar Asset
+    └── agent_naser_real.jpg
 ```
 
 ---
 
-## 🌟 অপশন ১: Render.com এ ৫ মিনিটে লাইভ করার নিয়ম (১০০% ফ্রি ও সহজ)
+## 🌟 Option 1: Deploy on Render.com (Recommended — 100% Free & Fast)
 
-[Render.com](https://render.com) এ আমাদের দেওয়া `render.yaml` এবং `package.json` স্বয়ংক্রিয়ভাবে ডিটেক্ট হয়।
+Render automatically detects `package.json` and `render.yaml`.
 
-### ধাপ ১: কোড GitHub-এ আপলোড করুন
-1. আপনার ব্রাউজারে **[GitHub.com](https://github.com)** এ যান এবং একটি নতুন রিপোজিটরি তৈরি করুন (যেমন: `agent-naser-pro`)।
-2. যদি আপনার কম্পিউটারে Git ইনস্টল করা থাকে:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit - Agent Naser PRO SaaS"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/agent-naser-pro.git
-   git push -u origin main
-   ```
-   *(যদি Git না থাকে, তাহলে **GitHub Desktop** অ্যাপ ব্যবহার করুন অথবা GitHub পেজের **"uploading an existing file"** বাটনে ক্লিক করে পুরো ফোল্ডারের ফাইলগুলো টেনে ছেড়ে দিন।)*
+### Step 1: Upload to GitHub
+1. Open [GitHub.com](https://github.com) and create a new repository (e.g. `agent-naser-pro`).
+2. Set visibility to **Private** to keep your source code and database safe.
+3. Upload all files and folders from the project directly to the repository root.
 
-### ধাপ ২: Render.com এ ডিপ্লয় করুন
-1. **[Render.com](https://render.com)** এ ফ্রি একাউন্ট খুলুন (বা GitHub দিয়ে লগইন করুন)।
-2. ড্যাশবোর্ডে গিয়ে **"New +"** বাটনে ক্লিক করে **"Web Service"** সিলেক্ট করুন।
-3. আপনার GitHub একাউন্ট কানেক্ট করে **`agent-naser-pro`** রিপোজিটরি সিলেক্ট করুন।
-4. Render নিজে থেকেই সব কনফিগারেশন নিয়ে নিবে:
+### Step 2: Deploy on Render.com
+1. Sign in to your [Render.com](https://render.com) account.
+2. In the Render Dashboard, click the **+ New** button in the top bar.
+3. Select **Web Service**.
+4. Choose **Build and deploy from a Git repository** and click **Next**.
+5. Connect your GitHub account and click **Connect** next to your `agent-naser-pro` repository.
+6. Render will auto-fill the configuration:
    - **Name:** `agent-naser-pro`
-   - **Environment:** `Node`
-   - **Region:** Singapore / Frankfurt
+   - **Region:** Singapore or Frankfurt
    - **Branch:** `main`
+   - **Root Directory:** Leave blank
+   - **Runtime:** `Node`
    - **Build Command:** `npm install`
-   - **Start Command:** `npm start` (অথবা `node server.js`)
-   - **Plan:** `Free` (বা Starter)
-5. নিচে **"Deploy Web Service"** বাটনে ক্লিক করুন।
-6. ৩-৪ মিনিটের মধ্যে বিল্ড সম্পন্ন হবে এবং Render আপনাকে একটি লাইভ পাবলিক ইউআরএল দিবে:
-   👉 **`https://agent-naser-pro.onrender.com`**
-
-🎉 **অভিনন্দন! আপনার প্ল্যাটফর্ম সারা বিশ্বের জন্য লাইভ হয়ে গেছে!**
+   - **Start Command:** `npm start`
+   - **Instance Type:** `Free` ($0/month)
+7. Click **Deploy Web Service** at the bottom.
+8. Within 2–3 minutes, your build will finish and your live URL will be ready:
+   👉 `https://agent-naser-pro.onrender.com`
 
 ---
 
-## 🌟 অপশন ২: Railway.app এ লাইভ করার নিয়ম
+## 🌟 Option 2: Deploy on Railway.app
 
-1. **[Railway.app](https://railway.app)** এ যান এবং GitHub দিয়ে লগইন করুন।
-2. **"New Project"** -> **"Deploy from GitHub repo"** সিলেক্ট করুন।
-3. আপনার রিপোজিটরি নির্বাচন করুন।
-4. Railway স্বয়ংক্রিয়ভাবে `server.js` ফাইলটি রান করে লাইভ ইউআরএল তৈরি করে দিবে।
+1. Go to [Railway.app](https://railway.app) and sign in with GitHub.
+2. Click **New Project** > **Deploy from GitHub repo**.
+3. Select your `agent-naser-pro` repository.
+4. Railway will automatically execute `server.js` and assign an HTTPS URL.
 
 ---
 
-## 🌟 অপশন ৩: ক্লাউড ভিপিএস (DigitalOcean / Hetzner / AWS EC2) — কমার্শিয়াল SaaS এর জন্য
+## 🌟 Option 3: Dedicated Ubuntu Cloud VPS (DigitalOcean / Hetzner / AWS EC2)
 
-একটি কমার্শিয়াল SaaS-এর ক্ষেত্রে যেখানে শত শত ইউজার স্বয়ংক্রিয় ব্রাউজার বট (Playwright Bot) রান করবে, সেখানে Ubuntu VPS ব্যবহার করা সবচেয়ে নির্ভরযোগ্য:
+For heavy workloads with automated browser bots running 24/7:
 
-1. Ubuntu 22.04/24.04 সার্ভার তৈরি করুন ($৪-$৫/মাস)।
-2. সার্ভারে লগইন করে Node.js ও PM2 ইনস্টল করুন:
+1. Provision an Ubuntu 22.04/24.04 droplet or server.
+2. Install Node.js 20 LTS and PM2:
    ```bash
    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g pm2
    ```
-3. রিপোজিটরি ক্লোন করুন এবং ডিপেন্ডেন্সি ইনস্টল করুন:
+3. Clone your repository and install dependencies:
    ```bash
    git clone https://github.com/YOUR_USERNAME/agent-naser-pro.git
    cd agent-naser-pro
    npm install
    ```
-4. PM2 দিয়ে সার্ভার ২৪/৭ ব্যাকগ্রাউন্ডে চালু রাখুন:
+4. Start the server continuously with PM2:
    ```bash
    pm2 start server.js --name "agent-naser-pro"
    pm2 startup
    pm2 save
    ```
-5. Nginx রিভার্স প্রক্সি এবং Certbot দিয়ে ফ্রি SSL (HTTPS) সেট করুন:
+5. Set up Nginx reverse proxy with free Let's Encrypt SSL:
    ```bash
    sudo apt install -y nginx certbot python3-certbot-nginx
    sudo certbot --nginx -d app.yourdomain.com
@@ -104,18 +100,18 @@ backlink-agent/
 
 ---
 
-## 🔑 ডিফল্ট লগইন ক্রিডেনশিয়ালস
+## 🔑 Default Login Credentials
 
-| রোল | ইমেইল | পাসওয়ার্ড | অ্যাক্সেস |
+| Role | Email | Password | Access Level |
 | :--- | :--- | :--- | :--- |
-| 👑 **SuperAdmin** | `admin@agentnaser.pro` | `AGENTNASERPRO` | আনলিমিটেড ১০০টি ডুফলো সাইট, ক্রেডিট লিমিটহীন, সমস্ত ইউজার ডাটা |
-| 🎁 **Demo Test User** | `demo@agentnaser.pro` | `AGENT NASER` | ১০টি ফ্রি ট্রায়াল ক্রেডিট, ডুফলো নিচ ফাইন্ডার, পেওয়াল টেস্ট |
+| 👑 **SuperAdmin** | `admin@agentnaser.pro` | `AGENTNASERPRO` | Full access, unlimited AI credits, all 110+ sites unlocked |
+| 🎁 **Demo Test User** | `demo@agentnaser.pro` | `AGENT NASER` | 10 Free AI Trial Credits, Prospect Finder |
 
 ---
 
-## 🛡️ প্রধান সিকিউরিটি ও স্প্যাম ফিল্টার রুলস
+## 🛡️ Core Security & Guardrails
 
-1. **Moz Spam Score < 15%:** ১৫% এর বেশি স্প্যাম স্কোর থাকা কোনো সাইট প্ল্যাটফর্মে এন্ট্রি পাবে না।
-2. **Minimum DA 40+ to 96+:** শুধুমাত্র হাই-অথরিটি সাইটে ব্যাকলিংক তৈরি হবে।
-3. **Daily Limit Safeguard (10-25/day):** গুগল স্প্যাম ব্রেইন পেনাল্টি এড়াতে ধীর ও স্বাভাবিক গতিতে ব্যাকলিংক তৈরি করা হয়।
-4. **Isolated Outreach Mailbox:** ক্লায়েন্টের মূল বিজনেস ডোমেইন রক্ষা করতে আইসোলেটেড ডোমেইনে SPF, DKIM, DMARC সহ যোগাযোগ করা হয়।
+1. **Moz Spam Score < 15% Filter:** Blocks any domain with spam score exceeding 15%.
+2. **Authority Baseline (DA 40+ to 96+):** Exclusively targets authoritative white-hat sources.
+3. **Daily Velocity Cap (10–25 links/day):** Prevents search engine penalty triggers.
+4. **Isolated Outreach Gateway:** Protects client domains through separate dedicated mailboxes.

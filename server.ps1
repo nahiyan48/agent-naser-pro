@@ -866,7 +866,7 @@ while ($listener.IsListening) {
                     user_name = $userName
                     company = if ($req.company) { $req.company } else { "Client Website" }
                     plan = $planName
-                    amount = "৳" + $amount + " BDT"
+                    amount = "$" + $amount + " USD"
                     gateway = $gateway
                     status = "Success (Instant Settlement)"
                     timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
