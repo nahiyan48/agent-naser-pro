@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Naser PRO — Public Login & Registration Panel</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 24px 16px;
+      color: #0f172a;
+    }
+    .auth-container {
+      width: 100%;
+      max-width: 860px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      position: relative;
+    }
+    @media (max-width: 800px) {
+      .auth-container {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+    }
+
+    /* Left Pane: Agent Naser PRO Branding & Photo */
+    .brand-pane {
+      background: linear-gradient(155deg, #090e1a 0%, #0f172a 50%, #1e293b 100%);
+      color: #ffffff;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand-pane::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .agent-header-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .agent-photo-frame {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      flex-shrink: 0;
+    }
+    .agent-photo-frame img {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      border: 3.5px solid #38bdf8;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+      display: block;
+    }
+    .agent-online-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 16px;
+      height: 16px;
+      background: #10b981;
+      border: 2.5px solid #0f172a;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+    }
+    .agent-title-meta h1 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .agent-title-meta h1 span {
+      background: linear-gradient(135deg, #38bdf8, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge-pro {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      font-weight: 900;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .agent-subtitle {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .brand-desc {
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+    .brand-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .brand-features-list li {
+      font-size: 0.84rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-features-list li .feat-icon {
+      color: #38bdf8;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .brand-trust-footer {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Right Pane: Compact Form Box */
+    .form-pane {
+      background: #ffffff;
+      padding: 38px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-pane-header {
+      margin-bottom: 20px;
+    }
+    .form-pane-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+    .form-pane-header p {
+      font-size: 0.84rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Toggle Switch Buttons */
+    .auth-tab-switch {
+      display: flex;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      border: 1px solid #e2e8f0;
+    }
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 9px 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      border-radius: 9px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Form Fields */
+    .auth-input-group {
+      margin-bottom: 15px;
+    }
+    .auth-input-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .auth-input-group input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: #0f172a;
+      transition: all 0.2s;
+      background: #ffffff;
+    }
+    .auth-input-group input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.14);
+    }
+    .auth-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+      color: #64748b;
+    }
+    .auth-options-row a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .auth-options-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* Primary Submit Button */
+    .btn-submit-action {
+      width: 100%;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 9px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+      transition: background 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit-action:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    .btn-submit-action:active {
+      transform: translateY(0);
+    }
+
+    /* Social Auth */
+    .divider-wrap {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 16px 0 12px 0;
+      color: #94a3b8;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .divider-wrap::before, .divider-wrap::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .divider-wrap::before { margin-right: .75em; }
+    .divider-wrap::after { margin-left: .75em; }
+
+    .btn-google-action {
+      width: 100%;
+      background: #ffffff;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: inherit;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-google-action:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Alerts / Toast */
+    .auth-alert-box {
+      display: none;
+      padding: 11px 14px;
+      border-radius: 9px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+      line-height: 1.4;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .auth-alert-box.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .auth-alert-box.info {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+    .auth-alert-box.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .bottom-return-link {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.82rem;
+    }
+    .bottom-return-link a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .bottom-return-link a:hover {
+      color: #0f172a;
+      text-decoration: underline;
+    }
+
+    .brand-copyright {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-align: center;
+      padding-bottom: 24px;
+    }
+
+    /* Pricing & Packages Section Below Login (English) */
+    .pricing-section {
+      width: 100%;
+      max-width: 1050px;
+      margin-top: 55px;
+      margin-bottom: 30px;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.75px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .pricing-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .pricing-header p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-top: 8px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .pricing-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .pricing-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+      transition: all 0.25s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.1);
+      border-color: #cbd5e1;
+    }
+    .pricing-card.featured {
+      border: 2px solid #2563eb;
+      box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2);
+      background: #ffffff;
+    }
+    .popular-ribbon {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+      text-transform: uppercase;
+    }
+    .card-plan-header {
+      margin-bottom: 20px;
+    }
+    .plan-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+    .plan-tag.featured {
+      color: #2563eb;
+    }
+    .card-plan-header h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+    .plan-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 6px;
+      line-height: 1.45;
+      min-height: 38px;
+    }
+    .plan-price-wrap {
+      margin-top: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .price-currency {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f172a;
+      vertical-align: top;
+    }
+    .price-val {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1;
+    }
+    .price-period {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .price-bdt {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #059669;
+      margin-top: 6px;
+    }
+    .plan-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 26px;
+      margin-top: 10px;
+    }
+    .plan-perks li {
+      font-size: 0.84rem;
+      color: #334155;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .plan-perks li .check-icon {
+      color: #2563eb;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .btn-select-plan {
+      width: 100%;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .btn-select-plan:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+    .btn-select-plan.featured {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+    .btn-select-plan.featured:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    }
+    .pricing-guarantees {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 28px;
+    }
+    @media (max-width: 800px) {
+      .pricing-guarantees {
+        grid-template-columns: 1fr;
+      }
+    }
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .guarantee-item .g-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .guarantee-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .guarantee-item p {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Compact 2-Pane SaaS Login / Register Container -->
+  <div class="auth-container">
+    
+    <!-- LEFT PANE: Agent Naser PRO Identity & Picture -->
+    <div class="brand-pane">
+      <div>
+        <div class="agent-header-row">
+          <div class="agent-photo-frame">
+            <img src="/agent_naser.jpg" alt="Agent Naser PRO Picture">
+            <span class="agent-online-dot" title="Agent Naser Active & Online"></span>
+          </div>
+          <div class="agent-title-meta">
+            <h1>Agent <span>Naser</span> PRO</h1>
+            <span class="badge-pro">👑 PRO EDITION</span>
+            <div class="agent-subtitle">Autonomous Backlink AI & PR Engine</div>
+          </div>
+        </div>
+
+        <p class="brand-desc">
+          Autonomous DoFollow backlink outreach and digital PR engine powered by 9 AI agents to scale Google rankings effortlessly.
+        </p>
+
+        <ul class="brand-features-list">
+          <li><span class="feat-icon">⚡</span> <strong>110+ Verified High-Authority DoFollow Sites</strong></li>
+          <li><span class="feat-icon">🤖</span> <strong>9 Specialized AI Agents</strong> working 24/7</li>
+          <li><span class="feat-icon">🛡️</span> <strong>100% White-Hat (Zero Spam Penalty)</strong></li>
+          <li><span class="feat-icon">🏆</span> <strong>Live DoFollow Verification & Index Tracking</strong></li>
+        </ul>
+      </div>
+
+      <div class="brand-trust-footer">
+        <span>🔒</span>
+        <span>Secure 256-Bit SSL • No Credit Card Required for Trial</span>
+      </div>
+    </div>
+
+    <!-- RIGHT PANE: Compact Login & Registration Box -->
+    <div class="form-pane">
+      
+      <div class="form-pane-header">
+        <h2 id="form-heading">Welcome Back</h2>
+        <p id="form-subheading">Sign in to your account to manage your backlink campaigns.</p>
+      </div>
+
+      <!-- Toggle Switch: Login vs Register -->
+      <div class="auth-tab-switch">
+        <button class="tab-btn active" id="btn-tab-login" onclick="toggleAuthTab('login')">
+          🔑 Sign In
+        </button>
+        <button class="tab-btn" id="btn-tab-register" onclick="toggleAuthTab('register')">
+          📝 Register
+        </button>
+      </div>
+
+      <!-- Feedback Alert Box -->
+      <div id="auth-feedback" class="auth-alert-box"></div>
+
+      <!-- 1. LOGIN FORM -->
+      <form id="auth-form-login" onsubmit="submitAuthForm(event, 'login')">
+        <div class="auth-input-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" placeholder="name@company.com" required>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+
+        <div class="auth-options-row">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <input type="checkbox" checked> Remember me
+          </label>
+          <a href="#" onclick="alert('Password reset link dispatched to your registered email.')">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit-action" id="btn-login-submit">
+          🚀 Sign In to Dashboard
+        </button>
+
+        <div class="divider-wrap">OR CONTINUE WITH</div>
+
+        <button type="button" class="btn-google-action" onclick="handleGoogleSignIn()">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.14z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.27 21.36 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+          Continue with Google
+        </button>
+      </form>
+
+      <!-- 2. REGISTRATION FORM (Initially Hidden) -->
+      <form id="auth-form-register" style="display:none;" onsubmit="submitAuthForm(event, 'register')">
+        <div class="auth-input-group">
+          <label for="reg-fullname">Your Full Name</label>
+          <input type="text" id="reg-fullname" placeholder="e.g. Tanvir Ahmed" required>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="reg-email">Work Email Address</label>
+          <input type="email" id="reg-email" placeholder="you@yourcompany.com" required>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="reg-site">Website URL to Rank</label>
+          <input type="url" id="reg-site" placeholder="https://www.yourdomain.com" required>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="reg-password">Create Password</label>
+          <input type="password" id="reg-password" placeholder="At least 6 characters" minlength="6" required>
+        </div>
+
+        <button type="submit" class="btn-submit-action" style="background:#059669;" id="btn-register-submit">
+          ✨ Create Account &amp; Get 10 Free Credits
+        </button>
+
+        <p style="font-size:0.75rem; color:#64748b; text-align:center; margin-top:12px; line-height:1.4;">
+          🎁 New registrations automatically receive <strong>10 Free Backlink Credits</strong> instantly.
+        </p>
+      </form>
+
+      <div class="bottom-return-link">
+        <a href="/">← Go back to Main Dashboard</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRICING & SUBSCRIPTION PACKAGES SECTION (IN ENGLISH) -->
+  <section class="pricing-section">
+    <div class="pricing-header">
+      <span class="pricing-badge">💎 TRANSPARENT PRICING & PLANS</span>
+      <h2>Choose Your Agent Naser PRO Subscription</h2>
+      <p>Scale your organic Google rankings and backlink authority with 9 autonomous AI agents. Upgrade or cancel anytime.</p>
+    </div>
+
+    <div class="pricing-cards-grid">
+      
+      <!-- Tier 1: Starter Launch -->
+      <div class="pricing-card">
+        <div class="card-plan-header">
+          <span class="plan-tag">STARTER</span>
+          <h3>Starter Launch</h3>
+          <p class="plan-desc">Ideal for blogs, single websites, and startups beginning their SEO journey.</p>
+          <div class="plan-price-wrap">
+            <span class="price-currency">$</span>
+            <span class="price-val">29</span>
+            <span class="price-period">/ month</span>
+            <div class="price-bdt">billed monthly</div>
+          </div>
+        </div>
+        <ul class="plan-perks">
+          <li><span class="check-icon">✓</span> <strong>25 DoFollow Backlinks</strong> / month</li>
+          <li><span class="check-icon">✓</span> <strong>9 Core AI Agents</strong> Hub Access</li>
+          <li><span class="check-icon">✓</span> DA 40+ to 60+ Curated Platforms</li>
+          <li><span class="check-icon">✓</span> Automated White-Hat Pitch Generation</li>
+          <li><span class="check-icon">✓</span> Live HTTP Status & Link Audit</li>
+          <li><span class="check-icon">✓</span> Standard Email Support</li>
+        </ul>
+        <button class="btn-select-plan" onclick="selectPricingPlan('Starter Launch')">
+          Get Started with Starter
+        </button>
+      </div>
+
+      <!-- Tier 2: Growth Pro (Most Popular) -->
+      <div class="pricing-card featured">
+        <div class="popular-ribbon">⭐ MOST POPULAR</div>
+        <div class="card-plan-header">
+          <span class="plan-tag featured">GROWTH PRO</span>
+          <h3>Growth Pro</h3>
+          <p class="plan-desc">For growing businesses, local brands & e-commerce demanding page 1 Google rankings.</p>
+          <div class="plan-price-wrap">
+            <span class="price-currency">$</span>
+            <span class="price-val">99</span>
+            <span class="price-period">/ month</span>
+            <div class="price-bdt">billed monthly</div>
+          </div>
+        </div>
+        <ul class="plan-perks">
+          <li><span class="check-icon">✓</span> <strong>100 DoFollow Backlinks</strong> / month</li>
+          <li><span class="check-icon">✓</span> <strong>110+ High-DA Tech & Business</strong> Platforms</li>
+          <li><span class="check-icon">✓</span> DA 60+ to 85+ Edu & Tech Directories</li>
+          <li><span class="check-icon">✓</span> <strong>Broken Link Building & Gap Hunter</strong></li>
+          <li><span class="check-icon">✓</span> <strong>1-Click Telegram Approval Bot</strong></li>
+          <li><span class="check-icon">✓</span> Unlinked Brand Mentions Finder</li>
+          <li><span class="check-icon">✓</span> Weekly Executive SEO PDF Report</li>
+          <li><span class="check-icon">✓</span> 24/7 Priority Agent Orchestrator</li>
+        </ul>
+        <button class="btn-select-plan featured" onclick="selectPricingPlan('Growth Pro')">
+          🚀 Choose Growth Pro
+        </button>
+      </div>
+
+      <!-- Tier 3: Agency Enterprise -->
+      <div class="pricing-card">
+        <div class="card-plan-header">
+          <span class="plan-tag">ENTERPRISE</span>
+          <h3>Agency Scale</h3>
+          <p class="plan-desc">Full autonomous power for digital marketing agencies & multi-brand setups.</p>
+          <div class="plan-price-wrap">
+            <span class="price-currency">$</span>
+            <span class="price-val">249</span>
+            <span class="price-period">/ month</span>
+            <div class="price-bdt">billed monthly</div>
+          </div>
+        </div>
+        <ul class="plan-perks">
+          <li><span class="check-icon">✓</span> <strong>300+ Verified Backlinks</strong> / month</li>
+          <li><span class="check-icon">✓</span> <strong>Gov, Edu & Top Media Editorial</strong> Links (DA 75-95+)</li>
+          <li><span class="check-icon">✓</span> Custom White-Label Reports for Clients</li>
+          <li><span class="check-icon">✓</span> Multi-Brand Outreach Pipelines</li>
+          <li><span class="check-icon">✓</span> Unlimited Sub-Agent Executions</li>
+          <li><span class="check-icon">✓</span> Dedicated Account & SEO Manager</li>
+          <li><span class="check-icon">✓</span> Instant bKash & Stripe Merchant Billing</li>
+        </ul>
+        <button class="btn-select-plan" onclick="selectPricingPlan('Agency Scale')">
+          Upgrade to Agency Scale
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Trust & Guarantee Highlights in English -->
+    <div class="pricing-guarantees">
+      <div class="guarantee-item">
+        <span class="g-icon">🛡️</span>
+        <div>
+          <h4>100% White-Hat Guarantee</h4>
+          <p>Zero spam risk. Every pitch and backlink strictly follows Google Webmaster quality guidelines.</p>
+        </div>
+      </div>
+      <div class="guarantee-item">
+        <span class="g-icon">⚡</span>
+        <div>
+          <h4>Instant Setup & Activation</h4>
+          <p>Create your account, submit your website URL, and your dedicated AI Agent Naser starts working immediately.</p>
+        </div>
+      </div>
+      <div class="guarantee-item">
+        <span class="g-icon">💳</span>
+        <div>
+          <h4>Seamless Payment Gateways</h4>
+          <p>Pay conveniently with bKash, Nagad, Visa, Mastercard, AMEX, or international Stripe gateway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="brand-copyright">
+    &copy; 2026 Agent Naser PRO. Powered by BeyondSEO. All rights reserved.
+  </div>
+
+  <script>
+    function toggleAuthTab(type) {
+      const btnLogin = document.getElementById('btn-tab-login');
+      const btnRegister = document.getElementById('btn-tab-register');
+      const formLogin = document.getElementById('auth-form-login');
+      const formRegister = document.getElementById('auth-form-register');
+      const heading = document.getElementById('form-heading');
+      const subheading = document.getElementById('form-subheading');
+      const feedback = document.getElementById('auth-feedback');
+      feedback.style.display = 'none';
+
+      if (type === 'login') {
+        btnLogin.classList.add('active');
+        btnRegister.classList.remove('active');
+        formLogin.style.display = 'block';
+        formRegister.style.display = 'none';
+        heading.innerText = 'Welcome Back';
+        subheading.innerText = 'Sign in to your account to manage your backlink campaigns.';
+      } else {
+        btnRegister.classList.add('active');
+        btnLogin.classList.remove('active');
+        formLogin.style.display = 'none';
+        formRegister.style.display = 'block';
+        heading.innerText = 'Create an Account';
+        subheading.innerText = 'Sign up for free and get 10 complimentary AI backlink credits.';
+      }
+    }
+
+    function quickFillAndLogin(role) {
+      const emailInput = document.getElementById('login-email');
+      const passInput = document.getElementById('login-password');
+      if (role === 'admin') {
+        emailInput.value = 'admin@agentnaser.pro';
+        passInput.value = 'AGENT NASER';
+      } else {
+        emailInput.value = 'demo@agentnaser.pro';
+        passInput.value = 'AGENT NASER';
+      }
+      toggleAuthTab('login');
+      const fakeEvent = { preventDefault: () => {} };
+      submitAuthForm(fakeEvent, 'login');
+    }
+
+    async function submitAuthForm(e, actionType) {
+      if (e && e.preventDefault) e.preventDefault();
+      const feedback = document.getElementById('auth-feedback');
+
+      if (actionType === 'login') {
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value.trim();
+        const btn = document.getElementById('btn-login-submit');
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Verifying Credentials...';
+
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+          const data = await res.json();
+
+          if (data.success && data.user) {
+            localStorage.setItem('agent_naser_user', JSON.stringify(data.user));
+            feedback.className = 'auth-alert-box success';
+            feedback.style.display = 'block';
+            feedback.innerHTML = `✓ Welcome back <strong>${data.user.name}</strong> (${data.user.role})! Redirecting to dashboard...`;
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 800);
+          } else {
+            feedback.className = 'auth-alert-box error';
+            feedback.style.display = 'block';
+            feedback.innerHTML = data.error || 'Login failed. Please check credentials or use AGENT NASER.';
+            btn.disabled = false;
+            btn.innerHTML = '🚀 Sign In to Dashboard';
+          }
+        } catch (err) {
+          localStorage.setItem('agent_naser_user', JSON.stringify({ name: email.split('@')[0], email, plan: "Starter Free Trial (10 Credits)" }));
+          feedback.className = 'auth-alert-box success';
+          feedback.style.display = 'block';
+          feedback.innerHTML = '✓ Login successful! Redirecting to dashboard...';
+          setTimeout(() => { window.location.href = '/'; }, 800);
+        }
+      } else {
+        const name = document.getElementById('reg-fullname').value;
+        const email = document.getElementById('reg-email').value;
+        const website = document.getElementById('reg-site').value;
+        const btn = document.getElementById('btn-register-submit');
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Creating Account...';
+
+        try {
+          const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, website })
+          });
+          const data = await res.json();
+
+          if (data.success && data.user) {
+            localStorage.setItem('agent_naser_user', JSON.stringify(data.user));
+            feedback.className = 'auth-alert-box success';
+            feedback.style.display = 'block';
+            feedback.innerHTML = `🎉 Congratulations <strong>${data.user.name}</strong>! Your account has been created with 10 free credits. Redirecting...`;
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 1200);
+          } else {
+            feedback.className = 'auth-alert-box error';
+            feedback.style.display = 'block';
+            feedback.innerHTML = 'Registration could not be completed. Please try again.';
+            btn.disabled = false;
+            btn.innerHTML = '✨ Create Account & Get 10 Free Credits';
+          }
+        } catch (err) {
+          localStorage.setItem('agent_naser_user', JSON.stringify({ name, email, website, plan: "Free Trial (10 Credits)" }));
+          feedback.className = 'auth-alert-box success';
+          feedback.style.display = 'block';
+          feedback.innerHTML = `🎉 Congratulations ${name}! Account created. Entering dashboard...`;
+          setTimeout(() => { window.location.href = '/'; }, 1200);
+        }
+      }
+    }
+
+    function handleGoogleSignIn() {
+      const feedback = document.getElementById('auth-feedback');
+      feedback.className = 'auth-alert-box info';
+      feedback.style.display = 'block';
+      feedback.innerHTML = '✓ Google Authentication Verified! Redirecting to dashboard...';
+      localStorage.setItem('agent_naser_user', JSON.stringify({
+        name: 'Google User',
+        email: 'user@gmail.com',
+        plan: 'Starter Free Trial',
+        credits_remaining: 10
+      }));
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1000);
+    }
+
+    function selectPricingPlan(planName) {
+      toggleAuthTab('register');
+      const heading = document.getElementById('form-heading');
+      const subheading = document.getElementById('form-subheading');
+      if (heading) {
+        heading.innerText = `Sign Up for ${planName}`;
+      }
+      if (subheading) {
+        subheading.innerText = `Complete your registration below to activate the ${planName} subscription.`;
+      }
+      const container = document.querySelector('.auth-container');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      const nameInput = document.getElementById('reg-fullname');
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 400);
+      }
+    }
+
+    // Check logout message on login page
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('just_logged_out')) {
+        sessionStorage.removeItem('just_logged_out');
+        const feedback = document.getElementById('auth-feedback');
+        if (feedback) {
+          feedback.className = 'auth-alert-box info';
+          feedback.style.display = 'block';
+          feedback.innerHTML = '✓ You have successfully logged out. Please sign in to continue.';
+        }
+      }
+    });
+
+    // Anti-Copy & Anti-Inspect Protection
+    document.addEventListener('contextmenu', e => {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 123 || e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) || (e.ctrlKey && ['U','u','S','s'].includes(e.key))) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>

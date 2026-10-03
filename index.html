@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Naser — Autonomous Backlink AI & Digital PR Engine</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand" style="display:flex; align-items:center; gap:12px; padding:16px 20px;">
+        <div class="brand-photo-wrap" style="position:relative; flex-shrink:0;">
+          <img src="/agent_naser.jpg" alt="Agent Naser PRO" style="width:42px; height:42px; border-radius:50%; object-fit:cover; border:2px solid #38bdf8; box-shadow:0 0 10px rgba(56,189,248,0.4); display:block;">
+          <span style="position:absolute; bottom:0; right:0; width:10px; height:10px; background:#10b981; border:1.5px solid #0f172a; border-radius:50%;"></span>
+        </div>
+        <div class="brand-text">
+          <h2 style="font-size:1.05rem; margin:0; line-height:1.2;">Agent <span style="color:#38bdf8;">Naser</span> <span style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#0f172a; font-size:0.65rem; padding:1px 5px; border-radius:4px; font-weight:800; vertical-align:middle;">PRO</span></h2>
+          <span class="badge-sub" style="font-size:0.72rem; color:#94a3b8;">Autonomous Backlink AI</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="agents-tab">
+          <span class="icon">🤖</span> 10 Core Agents Hub
+          <span class="badge-count highlight">10</span>
+        </button>
+        <button class="nav-item" data-tab="approval-tab">
+          <span class="icon">✋</span> Human Approval Queue
+          <span class="badge-count highlight" id="badge-approval-count">10</span>
+        </button>
+        <button class="nav-item" data-tab="outreach-tab">
+          <span class="icon">🛡️</span> White-Hat Outreach & Gap
+        </button>
+        <button class="nav-item" data-tab="inbox-tab">
+          <span class="icon">📥</span> Reply Classifier & Inbox
+          <span class="badge-count" id="badge-reply-count">10</span>
+        </button>
+        <button class="nav-item" data-tab="tracker-tab">
+          <span class="icon">🏆</span> Won Links Tracker
+          <span class="badge-count success" id="badge-won-count">10</span>
+        </button>
+        <button class="nav-item" data-tab="niche-finder-tab" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 1.5px solid #3b82f6; color: #1d4ed8; font-weight: 800;">
+          <span class="icon">🔍</span> DoFollow Niche Finder
+          <span class="badge-count" id="badge-niche-count" style="background: #2563eb; color: #ffffff;">10 / 100</span>
+        </button>
+        <button class="nav-item" data-tab="trial-tab" style="background:#f0fdf4; border:1px solid #bbf7d0; color:#15803d; font-weight:800;">
+          <span class="icon">🎁</span> 10 Free Trial Backlinks
+          <span class="badge-count" style="background:#16a34a; color:#ffffff;">10 FREE</span>
+        </button>
+        <button class="nav-item" data-tab="tech-tab">
+          <span class="icon">💻</span> Tech Listing & Search Bar
+          <span class="badge-count" id="tech-count-badge">10</span>
+        </button>
+        <button class="nav-item" data-tab="report-tab">
+          <span class="icon">📊</span> Weekly Executive Report
+        </button>
+        <button class="nav-item" data-tab="agreement-tab">
+          <span class="icon">📜</span> Developer Agreement & Roadmap
+        </button>
+        <button class="nav-item" data-tab="saas-tab">
+          <span class="icon">💳</span> Subscription & Billing
+          <span class="badge-count highlight">PLANS</span>
+        </button>
+        <button class="nav-item" data-tab="campaign-tab">
+          <span class="icon">🎯</span> Company & Media Assets
+        </button>
+        <button class="nav-item" data-tab="console-tab">
+          <span class="icon">💻</span> Multi-Agent Console
+          <span class="pulse-indicator"></span>
+        </button>
+        <button class="nav-item" data-tab="settings-tab">
+          <span class="icon">⚙️</span> Safety Limits & Warmup
+        </button>
+        <button class="nav-item nav-item-logout" id="sidebar-auth-logout" onclick="handleLogout()" style="color: #dc2626; font-weight: 700; margin-top: 8px; border-top: 1px solid #e2e8f0; padding-top: 12px; cursor: pointer; width: 100%; text-align: left; display: flex; align-items: center; gap: 10px; transition: all 0.2s;">
+          <span class="icon">🚪</span> Logout Session
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="persona-box" style="margin-bottom:12px; padding:10px; background:#111a2e; border:1px solid #1f2c48; border-radius:10px; display:flex; align-items:center; gap:10px;">
+          <img src="/agent_naser.jpg" alt="Agent Naser" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #38bdf8; flex-shrink:0;">
+          <div>
+            <div style="font-weight:700; color:#f1f5f9; font-size:0.9rem; line-height:1.2;">Agent Naser PRO</div>
+            <small style="color:#38bdf8; font-size:0.72rem; font-weight:600;">👑 Master Orchestrator</small>
+          </div>
+        </div>
+        <div class="campaign-summary-box">
+          <span class="caption">Active Company</span>
+          <strong id="sidebar-site-name">Techland BD</strong>
+          <small id="sidebar-site-url">https://www.techlandbd.com/</small>
+        </div>
+        <div class="sending-safety-meter">
+          <div class="meter-header">
+            <span>Daily Send Limit</span>
+            <strong id="sidebar-send-limit">10 / 10 Sent</strong>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="sidebar-meter-fill" style="width: 100%;"></div></div>
+          <small class="warmup-badge">✓ Warmup Health: 100% (10/10)</small>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top HUD Metrics Strip -->
+      <div class="top-hud-strip">
+        <div class="hud-item">
+          <div class="hud-icon">🎯</div>
+          <div class="hud-details">
+            <span class="hud-label">Monthly Link Target</span>
+            <span class="hud-value" id="hud-link-target">10 / 10 Links Won</span>
+            <span class="hud-sub" id="hud-target-progress">100% Goal Achieved</span>
+          </div>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-icon">💳</div>
+          <div class="hud-details">
+            <span class="hud-label">Monthly API Budget Cap</span>
+            <span class="hud-value" id="hud-budget-spent">$28.50 / $150.00 Spent</span>
+            <span class="hud-sub" id="hud-budget-rem">$121.50 Remaining</span>
+          </div>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-icon">🛡️</div>
+          <div class="hud-details">
+            <span class="hud-label">Circuit Breaker</span>
+            <span class="hud-value" id="hud-circuit-status">0 / 3 Errors (Healthy)</span>
+            <span class="hud-sub">Auto-Halt Protection: ON</span>
+          </div>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-icon">📬</div>
+          <div class="hud-details">
+            <span class="hud-label">Daily Sending Rate</span>
+            <span class="hud-value" id="hud-daily-sent">10 / 10 Sent Today</span>
+            <span class="hud-sub" id="hud-daily-rem">10 / 10 Quota Completed</span>
+          </div>
+        </div>
+
+        <div class="topbar-actions" style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+          <!-- SAAS CREDIT TRACKER PILL -->
+          <div id="saas-credit-tracker-header" class="saas-credit-pill" onclick="openUpgradeModal()" title="Click to view plans and upgrade">
+            <span class="credit-icon">🎁</span>
+            <div class="credit-meta">
+              <span class="credit-title">Credits: <strong id="header-credits-left">10 / 10</strong></span>
+              <div class="credit-meter-mini"><div class="credit-meter-fill" id="header-credits-fill" style="width: 100%;"></div></div>
+            </div>
+            <button class="btn-upgrade-glow" onclick="event.stopPropagation(); openUpgradeModal();">
+              ⚡ Upgrade to PRO
+            </button>
+          </div>
+
+          <!-- DYNAMIC USER AUTH & LOGOUT PILL -->
+          <div id="user-auth-pill" style="display: flex; align-items: center; gap: 6px;">
+            <a href="/login.html" class="btn btn-outline btn-sm" id="btn-top-login" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-weight:700; border:1.5px solid #2563eb; color:#1d4ed8; background:#eff6ff; border-radius:8px; padding:6px 12px; font-size:0.82rem; transition:all 0.2s;">
+              <img src="/agent_naser.jpg" style="width:20px; height:20px; border-radius:50%; object-fit:cover;">
+              <span>🔑 Sign In / Register</span>
+            </a>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btn-refresh-db">🔄 Sync Database</button>
+          <button class="btn btn-primary btn-sm" id="btn-run-autopilot-cycle">⚡ Run Agent Naser</button>
+        </div>
+      </div>
+
+      <!-- Top Bar Title Area -->
+      <header class="topbar">
+        <div class="topbar-title">
+          <h1 id="page-title">Agent Naser: 10 Core Autonomous Agents Hub</h1>
+          <p id="page-subtitle">Agent Naser — Master autonomous outreach orchestrator with 10 AI Agents powered by LangGraph, Python &amp; Claude Agent SDK.</p>
+        </div>
+      </header>
+
+      <!-- TAB 1: 10 CORE AGENTS HUB -->
+      <section class="tab-pane active" id="agents-tab">
+        <!-- Autopilot Rules Banner -->
+        <div class="autopilot-banner">
+          <div>
+            <h3 style="font-size:1.1rem; color:#f8fafc; margin-bottom:4px;">⚡ Agent Naser: Autopilot Rules Engine</h3>
+            <p style="font-size:0.85rem; color:#94a3b8;">Deterministic quality filtering before sending any pitch to protect domain reputation:</p>
+            <div class="autopilot-rules-list">
+              <span class="autopilot-rule-chip">🟢 <strong>Score 80+</strong>: Auto-Send Pitch</span>
+              <span class="autopilot-rule-chip">🟡 <strong>Score 60-80</strong>: Telegram 1-Click Approval</span>
+              <span class="autopilot-rule-chip">🔴 <strong>Score &lt; 60</strong>: Auto-Disqualified (Bad)</span>
+              <span class="autopilot-rule-chip">📅 <strong>Follow-up</strong>: Day 3 & 7 (Max 3 Emails)</span>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary" id="btn-trigger-autopilot-from-hub">
+              🚀 Run Agent Naser Pipeline Cycle
+            </button>
+          </div>
+        </div>
+
+        <!-- 10 Core Agents Grid -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3>Specialized Agents & Execution Status</h3>
+            <span class="badge badge-live">10/10 Agents Operational &amp; Ready</span>
+          </div>
+          <div class="agents-grid" id="core-agents-grid">
+            <!-- Dynamically populated from state.coreAgents -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: HUMAN APPROVAL QUEUE (WITH 0-100 SCORES) -->
+      <section class="tab-pane" id="approval-tab">
+        <div class="card mb-4 approval-hero-card">
+          <div class="approval-header-content">
+            <div class="approval-badge-icon">🛡️</div>
+            <div>
+              <h3>Zero-Spam Policy: 0-100 Scored Human Approval Queue</h3>
+              <p>Every target is scored 0-100 by the Scoring Agent. Leads with score 80+ are auto-send eligible; leads between 60-80 require your or Telegram bot 1-click approval; leads &lt;60 are rejected to prevent Google penalties.</p>
+            </div>
+            <div class="warmup-box">
+              <span class="warmup-title">Safety Status</span>
+              <strong id="approval-remaining-count">11 Sends Remaining Today</strong>
+              <small>Score 80+: Auto | Score 60-80: Review</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="drafts-container" id="approval-drafts-list">
+          <!-- Dynamically populated draft cards with score indicators -->
+        </div>
+      </section>
+
+      <!-- TAB 3: WHITE-HAT OUTREACH & STRATEGY -->
+      <section class="tab-pane" id="outreach-tab">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h3>🔍 Competitor Backlink Gap Analysis</h3>
+              <p class="hint">Identifies authoritative websites linking to Ryans Computers and Star Tech that don't yet link to Techland BD.</p>
+            </div>
+            <button class="btn btn-sm btn-primary" id="btn-scan-competitor-gap">⚡ AI: Extract Competitor Link Gaps</button>
+          </div>
+          <div class="competitor-grid" id="competitor-cards-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card">
+            <div class="card-header">
+              <h3>🔗 Broken Link Opportunities</h3>
+              <span class="badge badge-free">High Conversion (12%)</span>
+            </div>
+            <p class="hint">The agent crawled authority tech/edu resources and located dead 404 links, ready to pitch your content as a replacement.</p>
+            <div class="prospects-mini-list" id="broken-links-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🏷️ Unlinked Brand Mentions</h3>
+              <span class="badge badge-dofollow">Easiest Link Wins</span>
+            </div>
+            <p class="hint">Articles on news portals or blogs that mention "Techland BD" or "Techland" without an active hyperlink.</p>
+            <div class="prospects-mini-list" id="unlinked-mentions-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: REPLY CLASSIFIER & INBOX -->
+      <section class="tab-pane" id="inbox-tab">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h3>Inbox & Sentiment Classification</h3>
+              <p class="hint">AI reads incoming replies and classifies them into: Interested (Free Link), Demands Price ($ auto-blocked), or Unsubscribe (Blacklisted).</p>
+            </div>
+            <span class="badge badge-live">IMAP Sync: Active</span>
+          </div>
+
+          <!-- Interactive Reply Simulator -->
+          <div class="reply-tester-box mb-4">
+            <label>🧪 Test Incoming Reply Sentiment Classifier:</label>
+            <div class="test-input-row">
+              <input type="text" id="test-reply-input" placeholder="Type or paste sample reply text (e.g. 'We can publish your guide for $100' or 'We added your link!')...">
+              <button class="btn btn-primary" id="btn-test-classify">Classify Sentiment</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>From</th>
+                  <th>Domain</th>
+                  <th>Sentiment Classification</th>
+                  <th>Confidence</th>
+                  <th>Message Snippet</th>
+                  <th>Action Taken</th>
+                  <th>Received</th>
+                </tr>
+              </thead>
+              <tbody id="inbox-replies-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: WON LINKS TRACKER & AUDIT -->
+      <section class="tab-pane" id="tracker-tab">
+        <!-- REAL-TIME LIVE BACKLINK AUDITOR TOOL -->
+        <div class="card mb-4" style="border: 2px solid #3b82f6; background: #ffffff;">
+          <div class="card-header" style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h3 style="color:#0f172a; display:flex; align-items:center; gap:8px;">
+                <span>🔍</span> Real-Time Live Backlink Auditor
+              </h3>
+              <p class="hint" style="color:#64748b; font-size:0.83rem;">Input any placement URL to automatically crawl the live webpage, inspect HTTP response codes, and verify DoFollow link status instantly.</p>
+            </div>
+            <span class="badge" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; font-weight:700;">⚡ Live Web Crawler</span>
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 12px; align-items: flex-end;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label style="font-weight:700; font-size:0.82rem; color:#334155; margin-bottom:6px; display:block;">External Page URL to Audit:</label>
+                <input type="url" id="audit-page-url" class="form-control" placeholder="https://alternativeto.net/software/techland-bd/" style="padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:0.9rem;" value="https://alternativeto.net/software/techland-bd/">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label style="font-weight:700; font-size:0.82rem; color:#334155; margin-bottom:6px; display:block;">Your Target Domain:</label>
+                <input type="text" id="audit-target-domain" class="form-control" placeholder="techlandbd.com" style="padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:0.9rem;" value="techlandbd.com">
+              </div>
+              <button class="btn btn-primary" id="btn-run-live-audit" onclick="runLiveBacklinkAudit()" style="padding:10px 20px; font-weight:700; display:flex; align-items:center; gap:6px; height:42px;">
+                🚀 Audit Backlink Now
+              </button>
+            </div>
+
+            <!-- Dynamic Result Display Box -->
+            <div id="audit-result-display" style="display:none; margin-top: 18px; padding: 16px; border-radius: 10px; border: 1px solid #e2e8f0; background: #f8fafc;">
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h3>Live Backlinks Audit & Verification Table</h3>
+              <p class="hint">Automated Monitor Agent crawls target URLs regularly to ensure your backlink remains live, HTTP 200, and DoFollow.</p>
+            </div>
+            <button class="btn btn-sm btn-secondary" onclick="loadDatabase()">🔄 Re-Audit All Won Links</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Target Website</th>
+                  <th>Live Placement Page</th>
+                  <th>Anchor Text</th>
+                  <th>Linked Techland BD Page</th>
+                  <th>DR</th>
+                  <th>Link Attribute</th>
+                  <th>HTTP Verification</th>
+                  <th>Acquired</th>
+                </tr>
+              </thead>
+              <tbody id="won-links-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: TECH LISTING & UNIVERSAL CATEGORY SEARCH -->
+      <section class="tab-pane" id="tech-tab">
+        <div class="card search-explorer-card mb-4">
+          <div class="search-bar-row">
+            <div class="search-input-group">
+              <span class="search-lens-icon">🔍</span>
+              <input type="text" id="universal-search-input" placeholder="Filter by category or keyword (e.g. Tech, Edu, Commercial, Listing, Blog, Forum, Global)...">
+              <button class="btn-clear-search" id="btn-clear-search" title="Clear Search">&times;</button>
+            </div>
+            <button class="btn btn-primary" id="btn-do-search">Search</button>
+          </div>
+
+          <div class="category-pills-row">
+            <span class="pills-label">Filter by Category:</span>
+            <button class="cat-pill active" data-type="all">
+              🌐 All Categories (<span id="count-all">0</span>)
+            </button>
+            <button class="cat-pill" data-type="trial" style="background:#ecfdf5; border-color:#10b981; color:#047857; font-weight:800;">
+              🎁 10 Free Trial Sites (<span id="count-trial">10</span>)
+            </button>
+            <button class="cat-pill" data-type="Listing / Directory">
+              🏢 Listing Sites (<span id="count-listing">0</span>)
+            </button>
+            <button class="cat-pill" data-type="Edu / Academic">
+              🎓 Edu Sites (<span id="count-edu">0</span>)
+            </button>
+            <button class="cat-pill" data-type="Commercial Site">
+              💼 Commercial Sites (<span id="count-commercial">0</span>)
+            </button>
+            <button class="cat-pill" data-type="Blog / Web 2.0">
+              ✍️ Blog / Web 2.0 (<span id="count-blog">0</span>)
+            </button>
+            <button class="cat-pill" data-type="Forum / Community">
+              💬 Forum / Q&A (<span id="count-forum">0</span>)
+            </button>
+          </div>
+
+          <div class="search-results-info-bar">
+            <div class="info-tag" id="search-status-text">
+              ✨ <strong id="match-count-text">110 Tech Sites</strong> discovered — select a category to filter
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3>Verified Tech Listing & Directory Platforms (Free & High DA)</h3>
+            <div class="action-btns">
+              <button class="btn btn-secondary btn-sm" id="btn-export-tech-csv" onclick="exportTechSitesCSV()" style="font-weight:700; color:#059669; border-color:#a7f3d0; background:#ecfdf5;">📥 Export 110 Sites (CSV)</button>
+              <button class="btn btn-secondary btn-sm" id="btn-select-all-tech">☑️ Select All</button>
+              <button class="btn btn-primary btn-sm" id="btn-launch-tech-listing">🚀 List Company Everywhere</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th width="40"><input type="checkbox" id="master-tech-checkbox"></th>
+                  <th>Platform / Directory</th>
+                  <th>Directory Type</th>
+                  <th>Country</th>
+                  <th>Authority (DA/PA)</th>
+                  <th>Domain Age</th>
+                  <th>Assets</th>
+                  <th>Link Type</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tech-sites-tbody">
+                <!-- Dynamically Populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: 10 FREE TRIAL BACKLINKS (DEMO TEST FOR EVERYONE) -->
+      <section class="tab-pane" id="trial-tab">
+        <!-- Banner -->
+        <div class="card mb-4" style="background: linear-gradient(135deg, #090e1a 0%, #0f172a 60%, #1e293b 100%); color: #ffffff; border: 1px solid #334155; padding: 24px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:6px; background:#10b981; color:#0f172a; font-weight:800; font-size:0.75rem; padding:4px 10px; border-radius:6px; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">
+                🎁 100% Free Trial • Zero Credit Card • Demo Access
+              </div>
+              <h2 style="font-size:1.6rem; font-weight:800; color:#ffffff; letter-spacing:-0.5px; margin-bottom:6px;">
+                10 Free Trial High-DA Backlink Platforms
+              </h2>
+              <p style="color:#94a3b8; font-size:0.88rem; max-width:700px; line-height:1.5;">
+                10 High-Authority Platforms (DA 45 to DA 92) pre-loaded for demo and testing. Review step-by-step submission guidelines and launch 1-click AI backlink actions.
+              </p>
+            </div>
+            <!-- Credential Info Box -->
+            <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:14px 18px; min-width:280px;">
+              <div style="font-size:0.75rem; font-weight:700; color:#38bdf8; text-transform:uppercase; margin-bottom:6px; display:flex; justify-content:space-between;">
+                <span>🔑 Demo Login Credentials</span>
+                <span style="background:#0284c7; color:white; padding:1px 6px; border-radius:4px;">Ready</span>
+              </div>
+              <div style="font-size:0.82rem; margin-bottom:4px;">👑 <strong>Admin:</strong> <code style="color:#facc15;">admin@agentnaser.pro</code> (Pass: <code style="color:#facc15; font-weight:800;">AGENTNASERPRO</code>)</div>
+              <div style="font-size:0.82rem; margin-bottom:4px;">🎁 <strong>Demo:</strong> <code style="color:#34d399;">demo@agentnaser.pro</code> (Pass: <code style="color:#34d399; font-weight:800;">AGENT NASER</code>)</div>
+              <div style="font-size:0.82rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:4px; margin-top:4px; color:#cbd5e1;">
+                🔒 <strong>Full Security:</strong> 256-Bit Encrypted Session
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div style="display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="runAll10TrialSites()" style="background:#10b981; border-color:#059669; font-weight:700;">
+              ⚡ Run AI 1-Click Submission on All 10 Sites
+            </button>
+            <button class="btn btn-secondary" onclick="exportTrialSitesCSV()" style="font-weight:700; background:#ffffff; color:#0f172a;">
+              📥 Export 10 Trial Sites (CSV)
+            </button>
+            <a href="/login.html" class="btn btn-outline" style="border-color:#38bdf8; color:#38bdf8; text-decoration:none; font-weight:700;">
+              🔑 Switch Demo / Admin Login
+            </a>
+          </div>
+        </div>
+
+        <!-- 10 Sites Grid / Table -->
+        <div class="card mb-4">
+          <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>Top 10 Free High-DA Backlink Opportunities</h3>
+            <span class="badge badge-live">10 / 10 Active &amp; Verified</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th width="40">#</th>
+                  <th>Platform / Domain</th>
+                  <th>Authority (DA/PA)</th>
+                  <th>Category</th>
+                  <th>Link Type</th>
+                  <th>Price</th>
+                  <th>Step-by-Step Submission Guide</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="trial-sites-tbody">
+                <!-- Dynamically Populated by renderTrialSites() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: DOFOLLOW NICHE FINDER (CATEGORY-BASED BACKLINK PROSPECTOR) -->
+      <section class="tab-pane" id="niche-finder-tab">
+        <!-- Banner / Hero Card -->
+        <div class="card mb-4" style="background: linear-gradient(135deg, #090e1a 0%, #0d1b2a 50%, #1e3a8a 100%); color: #ffffff; border: 1px solid #2563eb; padding: 24px; border-radius: 12px; box-shadow: 0 8px 24px rgba(37,99,235,0.15);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:6px; background:#38bdf8; color:#0f172a; font-weight:800; font-size:0.75rem; padding:4px 10px; border-radius:6px; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">
+                🔍 Category DoFollow Prospect Finder • 10 Free / 100 PRO
+              </div>
+              <h2 style="font-size:1.6rem; font-weight:800; color:#ffffff; letter-spacing:-0.5px; margin-bottom:6px;">
+                DoFollow Niche Prospect Finder
+              </h2>
+              <p style="color:#cbd5e1; font-size:0.88rem; max-width:720px; line-height:1.5;">
+                Search any industry category — our AI agents audit prospective targets to secure DoFollow placements. Execute submissions and export comprehensive PDF reports.
+              </p>
+            </div>
+
+            <!-- SaaS Tier / Credit Status Indicator -->
+            <div id="niche-tier-indicator-box" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:14px 18px; min-width:280px;">
+              <div style="font-size:0.75rem; font-weight:700; color:#38bdf8; text-transform:uppercase; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+                <span>🎯 Active Plan Quota</span>
+                <span id="niche-user-plan-pill" style="background:#2563eb; color:white; padding:2px 8px; border-radius:4px; font-size:0.7rem;">Free Trial (10 Sites)</span>
+              </div>
+              <div style="font-size:0.85rem; margin-bottom:6px; display:flex; justify-content:space-between;">
+                <span>Available Sites:</span>
+                <strong id="niche-visible-count-text" style="color:#34d399;">10 Verified Sites</strong>
+              </div>
+              <div style="font-size:0.82rem; margin-bottom:8px; color:#94a3b8; display:flex; justify-content:space-between;">
+                <span>Locked for PRO:</span>
+                <strong id="niche-locked-count-text" style="color:#f59e0b;">🔒 90 Sites Locked</strong>
+              </div>
+              <button onclick="openUpgradeModal()" class="btn btn-sm btn-primary" style="width:100%; font-size:0.78rem; font-weight:700; background:#38bdf8; color:#0f172a; border:none; border-radius:6px; padding:6px; cursor:pointer;">
+                ⚡ Upgrade to PRO (Unlock 100 Sites)
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Search Bar -->
+          <div style="margin-top:22px; background:rgba(15,23,42,0.7); border:1px solid #334155; border-radius:10px; padding:14px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <div style="flex:1; min-width:280px; position:relative;">
+                <span style="position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:1.1rem; color:#94a3b8;">🔍</span>
+                <input type="text" id="niche-search-input" value="Real Estate" placeholder="Search any niche (e.g. Real Estate, E-Commerce, Tech, Health, Education, Finance, Fashion)..." style="width:100%; padding:12px 14px 12px 42px; border-radius:8px; border:1.5px solid #475569; background:#090e1a; color:#ffffff; font-size:0.95rem; font-weight:600; outline:none; transition:border 0.2s;" onkeydown="if(event.key==='Enter') executeNicheSearch();">
+              </div>
+              <button class="btn btn-primary" id="btn-search-niche" onclick="executeNicheSearch()" style="background:#2563eb; border-color:#1d4ed8; padding:12px 22px; font-weight:800; font-size:0.92rem; display:flex; align-items:center; gap:8px;">
+                <span>🔍 Find DoFollow Sites</span>
+              </button>
+            </div>
+
+            <!-- Quick Category Suggestion Pills -->
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; align-items:center;">
+              <span style="font-size:0.75rem; color:#94a3b8; font-weight:700; text-transform:uppercase; margin-right:4px;">Popular Niches:</span>
+              <button class="niche-pill active" onclick="quickSelectNiche('Real Estate', this)">🏢 Real Estate</button>
+              <button class="niche-pill" onclick="quickSelectNiche('E-Commerce & Retail', this)">🛒 E-Commerce</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Technology & Software', this)">💻 Tech & Software</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Health & Medical', this)">🏥 Health & Medical</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Finance & Crypto', this)">💰 Finance & Crypto</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Education & Learning', this)">🎓 Education</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Bangladesh Local Business', this)">🇧🇩 BD Local SEO</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Fashion & Lifestyle', this)">👗 Fashion</button>
+              <button class="niche-pill" onclick="quickSelectNiche('Travel & Tourism', this)">✈️ Travel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Export to PDF & Email Dispatch Action Toolbar -->
+        <div class="card mb-4" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; padding:16px 20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:1.5rem;">📄</span>
+              <div>
+                <strong style="color:#0f172a; font-size:0.95rem; display:block;">Executive PDF Report &amp; Direct Email Dispatch</strong>
+                <small style="color:#64748b;">Download discovered DoFollow targets as an executive PDF report or dispatch directly to a client email address.</small>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <!-- Download PDF Button -->
+              <button class="btn btn-outline" onclick="downloadNichePDFReport()" style="border:1.5px solid #0284c7; color:#0369a1; background:#f0f9ff; font-weight:700; display:flex; align-items:center; gap:6px;">
+                <span>📥</span> <span>Download PDF</span>
+              </button>
+
+              <!-- Email Dispatch Group -->
+              <div style="display:flex; align-items:center; gap:6px; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:8px; padding:3px 6px;">
+                <span style="font-size:0.9rem; margin-left:4px;">📧</span>
+                <input type="email" id="niche-email-recipient" placeholder="Recipient email address..." value="demo@agentnaser.pro" style="border:none; background:transparent; font-size:0.85rem; font-weight:600; color:#0f172a; padding:6px; outline:none; min-width:210px;">
+                <button class="btn btn-sm btn-primary" id="btn-dispatch-email" onclick="dispatchNichePDFEmail()" style="background:#10b981; border-color:#059669; font-weight:700; white-space:nowrap; display:flex; align-items:center; gap:4px;">
+                  <span>✉️</span> <span>Send Email</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Dispatch Alert Banner (hidden by default) -->
+          <div id="niche-email-status-banner" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:0.85rem; font-weight:700;"></div>
+        </div>
+
+        <!-- Discovered Sites Container -->
+        <div class="card mb-4">
+          <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <h3 id="niche-results-title" style="margin:0;">10 Verified DoFollow Backlink Opportunities</h3>
+              <span class="badge badge-live" id="niche-active-badge">100% DoFollow Verified</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <small style="color:#64748b; font-weight:600;" id="niche-target-client-sub">Client: <strong>Techland BD</strong> (https://www.techlandbd.com/)</small>
+              <button class="btn btn-sm btn-outline" onclick="executeNicheSearch()" title="Refresh Results">🔄 Refresh</button>
+            </div>
+          </div>
+
+          <!-- Dynamic List Cards Container -->
+          <div id="niche-sites-list-container" style="padding:16px; display:flex; flex-direction:column; gap:14px;">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <!-- Locked 90 Sites Banner for Free Users -->
+          <div id="niche-locked-preview-banner" style="margin:16px; padding:24px; background:linear-gradient(135deg, #fef3c7 0%, #fffbeb 50%, #eff6ff 100%); border:2px dashed #f59e0b; border-radius:12px; text-align:center;">
+            <div style="font-size:2.2rem; margin-bottom:8px;">🔒</div>
+            <h4 style="color:#92400e; font-size:1.25rem; font-weight:800; margin-bottom:6px;">
+              Remaining 90 High-DA DoFollow Sites Locked (Total 100 Sites)
+            </h4>
+            <p style="color:#78350f; font-size:0.88rem; max-width:650px; margin:0 auto 16px auto; line-height:1.5;">
+              Your current free trial includes the top 10 verified DoFollow platforms. Upgrade to unlock all <strong>100 high-authority DoFollow sites</strong> and execute autonomous campaigns on demand!
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="openUpgradeModal()" style="background:#f59e0b; border-color:#d97706; color:#0f172a; font-weight:800; padding:10px 24px; font-size:0.95rem; box-shadow:0 4px 12px rgba(245,158,11,0.3);">
+                ⚡ Upgrade to PRO (Unlock All 100 Sites)
+              </button>
+              <button class="btn btn-outline" onclick="downloadNichePDFReport()" style="border-color:#b45309; color:#92400e; font-weight:700;">
+                📄 Download Current 10 Sites PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: WEEKLY EXECUTIVE REPORT -->
+      <section class="tab-pane" id="report-tab">
+        <div class="grid-2col mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h3>📊 Weekly Performance Summary</h3>
+              <span class="badge badge-live" id="report-week-tag">Week 39</span>
+            </div>
+            <div class="card-body">
+              <div class="hud-item mb-4" style="background:#090e18; padding:12px; border-radius:8px;">
+                <div class="hud-icon">📈</div>
+                <div class="hud-details">
+                  <span class="hud-label">Editorial Reply Rate</span>
+                  <span class="hud-value" style="color:#34d399;" id="report-reply-rate">11.9%</span>
+                  <small style="color:#94a3b8;">5 Replies from 42 safe outreach sends</small>
+                </div>
+              </div>
+              <ul class="checklist-items">
+                <li><span class="check-icon">✓</span> <strong>Total Outreach Emails Sent:</strong> <span id="report-sent-count">42</span></li>
+                <li><span class="check-icon">✓</span> <strong>Replies Received:</strong> <span id="report-replies-count">5</span></li>
+                <li><span class="check-icon">✓</span> <strong>Live DoFollow Backlinks Won:</strong> <span id="report-won-count">2</span></li>
+                <li><span class="check-icon">✓</span> <strong>Paid Link Farms Auto-Blocked:</strong> <span id="report-blocked-farms">4</span> ($0 wasted)</li>
+                <li><span class="check-icon">✓</span> <strong>Blacklisted Unsubscribes:</strong> <span id="report-unsub-count">1</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>💰 ROI & Cost Per Link Analysis</h3>
+              <span class="badge badge-dofollow">$0 Paid for Links</span>
+            </div>
+            <div class="card-body">
+              <p style="font-size:0.9rem; color:#cbd5e1; margin-bottom:14px;">
+                White-hat organic links earned strictly via resource pitch and directory citations. No cash was paid to website editors.
+              </p>
+              <div class="hud-item mb-4" style="background:#090e18; padding:12px; border-radius:8px;">
+                <div class="hud-icon">🏷️</div>
+                <div class="hud-details">
+                  <span class="hud-label">API Cost Per Won Link</span>
+                  <span class="hud-value" style="color:#38bdf8;" id="report-cpl">$14.25</span>
+                  <small style="color:#94a3b8;">Commercial agencies charge $150-$300/link</small>
+                </div>
+              </div>
+              <h4 style="font-size:0.85rem; color:#94a3b8; margin-bottom:8px;">Service Breakdown:</h4>
+              <ul class="checklist-items">
+                <li>Claude API (Brain & Pitches): <strong>$14.20</strong></li>
+                <li>DataForSEO API (Backlink Gap): <strong>$8.50</strong></li>
+                <li>Hunter.io API (Email Verification): <strong>$3.80</strong></li>
+                <li>VPS Docker Hosting: <strong>$2.00</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3>📝 Executive Digest</h3>
+          </div>
+          <p id="report-executive-summary" style="font-size:0.95rem; color:#e2e8f0; line-height:1.6;">
+            Strong outreach momentum: Broken Link Building on BUET CSE achieved live DoFollow link. SaaSHub verified directory profile active. 4 paid link farms automatically rejected preserving white-hat domain integrity.
+          </p>
+        </div>
+      </section>
+
+      <!-- TAB 8: DEVELOPER AGREEMENT & ROADMAP (SECTION A, B, C, D, E, F) -->
+      <section class="tab-pane" id="agreement-tab">
+        <!-- 4 Phases Timeline -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h3>🗓️ 4-Phase Developer Timeline & Milestones</h3>
+              <p class="hint">Phased deliverables with clear verification checkpoints for your development team.</p>
+            </div>
+            <span class="badge badge-ready">Estimated: 4-5 Weeks</span>
+          </div>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-phase-card">
+              <span class="phase-number">Phase 1</span>
+              <span class="phase-duration">1 Week</span>
+              <h4>Prospect Finder + Scoring</h4>
+              <p>Competitor backlink gap scraping (Ryans, Star Tech), quality filter (DR 20+, spam &lt;5%), 0-100 scoring algorithm.</p>
+            </div>
+            <div class="roadmap-phase-card">
+              <span class="phase-number">Phase 2</span>
+              <span class="phase-duration">1-2 Weeks</span>
+              <h4>Email Generation + Approval</h4>
+              <p>Claude Agent SDK contextual email writing, Human Approval Queue, Telegram review bot, 20-30/day rate limiter.</p>
+            </div>
+            <div class="roadmap-phase-card">
+              <span class="phase-number">Phase 3</span>
+              <span class="phase-duration">1 Week</span>
+              <h4>Reply Sentiment + Follow-up</h4>
+              <p>NLP reply classifier (Interested, Paid Farm Flag, Blacklist), 3-day and 7-day automated follow-up sequence.</p>
+            </div>
+            <div class="roadmap-phase-card">
+              <span class="phase-number">Phase 4</span>
+              <span class="phase-duration">1 Week</span>
+              <h4>Tracking + Weekly Report</h4>
+              <p>Live link verification crawler (HTTP 200, DoFollow), weekly executive digest, 80+ score auto-pilot execution.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col mb-4">
+          <!-- Owner Readiness Checklist -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📋 Section A: Owner Readiness Checklist</h3>
+            </div>
+            <div class="card-body">
+              <ul class="checklist-items">
+                <li><span class="check-icon">✓</span> <strong>Website link & niche:</strong> Defined as Techland BD (Computer & Electronics).</li>
+                <li><span class="check-icon">✓</span> <strong>Monthly link target:</strong> Initial realistic target of 5-10 links/month.</li>
+                <li><span class="check-icon">✓</span> <strong>Link-worthy content:</strong> 2026 PC Selection Guide, warranty verification tool, benchmarks.</li>
+                <li><span class="check-icon">✓</span> <strong>Separate outreach domain:</strong> <code>techlandbd-press.com</code> (Never use main domain).</li>
+                <li><span class="check-icon">✓</span> <strong>Monthly Tool Budget:</strong> $100-300 cap for Claude, DataForSEO, Hunter, VPS.</li>
+                <li><span class="check-icon">✓</span> <strong>Accounts under your name:</strong> Claude API, DataForSEO, Hunter, VPS, Smartlead.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Developer Agreement Terms -->
+          <div class="card">
+            <div class="card-header">
+              <h3>🤝 Section D: Contract & Payment Terms</h3>
+            </div>
+            <div class="card-body">
+              <ul class="checklist-items">
+                <li><span class="check-icon">✓</span> <strong>Staged Payment:</strong> 30% advance kickoff, 40% working demo, 30% final handover.</li>
+                <li><span class="check-icon">✓</span> <strong>Code Ownership:</strong> Complete GitHub repository and documentation handed to you.</li>
+                <li><span class="check-icon">✓</span> <strong>Account Security:</strong> All API keys, cloud VPS, and databases must be in owner's name.</li>
+                <li><span class="check-icon">✓</span> <strong>Free Bug Fix Warranty:</strong> 1 month free bug fix warranty after deployment.</li>
+                <li><span class="check-icon">✓</span> <strong>Expected ROI:</strong> 2-5% reply rate is industry standard for white-hat cold outreach.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Red Flags Warning -->
+        <div class="red-flags-card mb-4">
+          <h3 style="color:#ef4444; font-size:1.1rem; margin-bottom:10px;">🚩 Section E: Developer Red Flags (Bad Developer Warning)</h3>
+          <div class="red-flag-item">
+            <span>❌</span>
+            <div><strong>"Built in 1 day" claims</strong> — A real multi-agent autonomous system requires state graph, anti-spam filters, and testing. Quick scripts are usually broken spam bots.</div>
+          </div>
+          <div class="red-flag-item">
+            <span>❌</span>
+            <div><strong>"100% guarantee" or "50 links/month" promises</strong> — White-hat SEO depends on real editor acceptance. Guarantees often indicate toxic PBNs or link schemes.</div>
+          </div>
+          <div class="red-flag-item">
+            <span>❌</span>
+            <div><strong>PBN, auto-comment, or forum spam suggestions</strong> — Search engine spam updates easily penalize low-quality tactics. Strict white-hat only.</div>
+          </div>
+          <div class="red-flag-item">
+            <span>❌</span>
+            <div><strong>Requesting API keys or credentials over chat</strong> — Credentials must only be stored in secure `.env` files or VPS vaults.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 9: COMPANY MEDIA KIT & KEYWORDS -->
+      <section class="tab-pane" id="campaign-tab">
+        <div class="grid-2col">
+          <div class="card">
+            <div class="card-header">
+              <h3>Company Media Assets & Links</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Company / Brand Name:</label>
+                <input type="text" id="camp-site-name" value="Techland BD">
+              </div>
+              <div class="form-group">
+                <label>Main Website URL:</label>
+                <input type="text" id="camp-site-url" value="https://www.techlandbd.com/">
+              </div>
+              <div class="form-group">
+                <label>Company Logo URL:</label>
+                <input type="text" id="camp-logo-url" value="https://www.techlandbd.com/image/catalog/techland/logo.png">
+              </div>
+              <div class="form-group">
+                <label>Official Tagline:</label>
+                <input type="text" id="camp-tagline" value="Leading Computer, Laptop & Gaming Component Retailer in Bangladesh">
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label>Official Phone Number:</label>
+                  <input type="text" id="camp-phone" value="+8801701663999">
+                </div>
+                <div class="form-group">
+                  <label>Headquarters Address:</label>
+                  <input type="text" id="camp-address" value="Multiplan Center, Level 9, New Elephant Road, Dhaka, Bangladesh">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Category Deep Pages (URLs the Agent will link to):</label>
+                <textarea id="camp-category-urls" rows="4">https://www.techlandbd.com/pc-components (PC Components)
+https://www.techlandbd.com/laptop-computer (Laptops & Notebooks)
+https://www.techlandbd.com/desktops (Desktop PC & Gaming Rigs)
+https://www.techlandbd.com/networking-equipment (Networking Equipment)</textarea>
+              </div>
+              <button class="btn btn-primary" id="btn-save-campaign">💾 Save Company Assets</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Company Bio & Target Keywords</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Short Business Bio (Used for directory listings):</label>
+                <textarea id="camp-short-bio" rows="3">Techland BD is one of the premier computer hardware, laptop, and gaming component retailers & e-commerce platforms in Bangladesh, offering genuine products with official warranty.</textarea>
+              </div>
+              <div class="form-group">
+                <label>Detailed Company Story (350+ words):</label>
+                <textarea id="camp-full-desc" rows="6">Founded in Multiplan Center, Dhaka, Techland BD is a premier computer hardware, laptop, and gaming gear retailer in Bangladesh. Delivering genuine tech products, laptops, custom gaming PCs, graphic cards, monitors, and networking solutions with nationwide delivery and official brand warranty support.</textarea>
+              </div>
+              <div class="form-group">
+                <label>Keywords (One per line):</label>
+                <textarea id="camp-keywords" rows="4">computer shop in bd
+laptop price in bangladesh
+techland bd laptop price
+gaming pc build bd
+pc components multiplan center dhaka</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 10: AUTONOMOUS CONSOLE -->
+      <section class="tab-pane" id="console-tab">
+        <div class="card console-card">
+          <div class="card-header">
+            <div class="console-title">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <h3>Autonomous Execution Stream</h3>
+            </div>
+            <button class="btn btn-sm btn-secondary" id="btn-clear-console">Clear Console</button>
+          </div>
+          <div class="terminal-body" id="agent-console-log">
+            <div class="log-line info">[System Boot] Agent Naser — Master Autonomous Backlink Engine Active.</div>
+            <div class="log-line success">[Agent Naser] Daily limit: 25. Warmup: Week 3. Circuit breaker: 0/3 errors (Healthy). Zero paid link farm enforcement: ACTIVE.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 11: SAFETY LIMITS & WARMUP -->
+      <section class="tab-pane" id="settings-tab">
+        <div class="grid-2col">
+          <div class="card">
+            <div class="card-header">
+              <h3>🛡️ Email Safety & Deliverability Checklist</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Outreach Domain (Isolated from Main Domain):</label>
+                <input type="text" value="techlandbd-press.com (Safe Domain)">
+              </div>
+              <div class="form-group">
+                <label>Daily Sending Limit (Recommended: 20-30/day):</label>
+                <input type="text" id="cfg-daily-limit" value="25 emails per day">
+              </div>
+              <div class="form-group">
+                <label>Warmup Status:</label>
+                <div class="status-indicator-box success">
+                  <strong>✓ Active (Week 3 of 4)</strong> — 99% Inbox Deliverability
+                </div>
+              </div>
+              <div class="form-group">
+                <label>DNS Records Status:</label>
+                <ul class="checklist-items">
+                  <li><span class="check-icon">✓</span> SPF Record: <code>v=spf1 include:_spf.google.com ~all</code></li>
+                  <li><span class="check-icon">✓</span> DKIM 2048-bit Signature: Enabled</li>
+                  <li><span class="check-icon">✓</span> DMARC Policy: <code>v=DMARC1; p=quarantine</code></li>
+                  <li><span class="check-icon">✓</span> Unsubscribe Header & Link: Enabled</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🛑 Blacklist & Zero-Spam Compliance</h3>
+            </div>
+            <div class="card-body">
+              <p class="hint">The agent automatically blacklists any prospect that unsubscribes or demands money for links.</p>
+              <div class="form-group">
+                <label>Active Blacklisted Domains (14 Domains):</label>
+                <textarea rows="7" readonly>commercialtechblog.com (Demands $120 fee)
+randomspamportal.net (Unsubscribed)
+buybacklinksfast.biz (Link farm network)
+guestpostreseller.xyz (PBN network)
+techlinksale.org (Paid paywall)</textarea>
+              </div>
+              <div class="agent-rules-box">
+                <h4>Compliance Standards Active:</h4>
+                <ul>
+                  <li>✔️ Never buy paid links from link farms (Avoids manual action).</li>
+                  <li>✔️ 1 prospect = 1 sequence (Never sends duplicate emails).</li>
+                  <li>✔️ Maximum 2 gentle follow-ups spaced 3 and 7 days apart.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW ROW: LIVE API INTEGRATIONS & SPAM SCORE PROTECTION -->
+        <div class="grid-2col mb-4" style="margin-top: 24px;">
+          <!-- Card 1: Live API Connectors & Bot Engine -->
+          <div class="card" style="border: 1.5px solid #3b82f6;">
+            <div class="card-header" style="background: linear-gradient(135deg, #eff6ff, #f8fafc); display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <h3 style="color:#1d4ed8; margin:0;">🔌 Live API Connectors &amp; Headless Bot Engine</h3>
+                <small style="color:#64748b;">Autonomous data sources and automated browser bot configurations</small>
+              </div>
+              <span class="badge badge-live" style="background:#10b981; color:#fff;">✓ All 5 APIs Connected</span>
+            </div>
+            <div class="card-body">
+              <div class="form-group mb-3">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label><strong>1. DataForSEO API (SERP &amp; Live Backlink Gap):</strong></label>
+                  <span style="font-size:0.75rem; color:#059669; font-weight:700;">● Live Connected (v3 REST)</span>
+                </div>
+                <input type="password" value="dfs_live_usr_998234_token_88921" readonly style="font-family:monospace; background:#f8fafc;">
+                <small style="color:#64748b;">Fetches live search engine results, keyword gap data, and backlink opportunities.</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label><strong>2. Moz API / Ahrefs API (DA, PA &amp; Spam Score):</strong></label>
+                  <span style="font-size:0.75rem; color:#059669; font-weight:700;">● Live Connected (Mozscape)</span>
+                </div>
+                <input type="password" value="moz_api_key_live_da_pa_spam_check_9941" readonly style="font-family:monospace; background:#f8fafc;">
+                <small style="color:#64748b;">Scans real-time Domain Authority (DA), Page Authority (PA), and Moz Spam Score (%).</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label><strong>3. Anthropic Claude 3.5 Sonnet / OpenAI API:</strong></label>
+                  <span style="font-size:0.75rem; color:#059669; font-weight:700;">● Connected (Claude 3.5 Sonnet)</span>
+                </div>
+                <input type="password" value="sk-ant-api03-live-editorial-writer-998214" readonly style="font-family:monospace; background:#f8fafc;">
+                <small style="color:#64748b;">Generates 100% unique, human-quality editorial pitches and contextual content.</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label><strong>4. Playwright Headless Browser Submitter:</strong></label>
+                  <span style="font-size:0.75rem; color:#059669; font-weight:700;">● Active (Chromium Engine)</span>
+                </div>
+                <div style="background:#f1f5f9; padding:8px 12px; border-radius:6px; font-size:0.82rem; color:#334155;">
+                  🤖 Navigates target platforms, automatically completes registrations, profile setups, and link submissions.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <label><strong>5. IMAP Auto-Verification Mailbox:</strong></label>
+                  <span style="font-size:0.75rem; color:#059669; font-weight:700;">● IMAP SSL Active</span>
+                </div>
+                <input type="text" value="outreach.verification@techlandbd-press.com (Auto-Catch)" readonly style="font-family:monospace; background:#f8fafc;">
+                <small style="color:#64748b;">Receives account activation tokens and confirms verification links automatically.</small>
+              </div>
+
+              <button class="btn btn-outline" onclick="testLiveApiConnections()" style="width:100%; margin-top:14px; border-color:#2563eb; color:#1d4ed8; font-weight:700;">
+                🧪 Test All Live API Connections
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Strict Spam Filter & Multi-Style Linking Rules -->
+          <div class="card" style="border: 1.5px solid #10b981;">
+            <div class="card-header" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc); display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <h3 style="color:#065f46; margin:0;">🛡️ Strict Spam Filter &amp; Multi-Style Linking</h3>
+                <small style="color:#64748b;">Strict 100% white-hat rules compliant with Google Search Essentials</small>
+              </div>
+              <span class="badge" style="background:#059669; color:#fff;">Spam Score &lt; 15%</span>
+            </div>
+            <div class="card-body">
+              <div class="form-group mb-3">
+                <label><strong>🚨 Moz Spam Score Threshold (Strict Safety Filter):</strong></label>
+                <div style="display:flex; align-items:center; gap:10px; margin-top:4px;">
+                  <input type="text" value="15% Maximum Allowed (16%+ Auto-Blocked)" readonly style="font-weight:700; color:#dc2626; background:#fef2f2; border-color:#fca5a5;">
+                </div>
+                <small style="color:#64748b;">Any website with Moz Spam Score exceeding 15% is automatically disqualified to safeguard rankings.</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <label><strong>⭐ Minimum Authority Check (DA &amp; PA Threshold):</strong></label>
+                <input type="text" value="Minimum DA 40+ to DA 96+ (High Authority Only)" readonly style="font-weight:700; color:#059669; background:#ecfdf5; border-color:#a7f3d0;">
+                <small style="color:#64748b;">Links are placed exclusively on high-authority, vetted DoFollow domains.</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <label><strong>🔗 Diverse Linking Formats Supported:</strong></label>
+                <ul class="checklist-items" style="margin-top:6px;">
+                  <li><span class="check-icon">✓</span> <strong>Company / Brand Anchor (30%):</strong> <code>Techland BD</code> Brand authority anchor.</li>
+                  <li><span class="check-icon">✓</span> <strong>Naked / Clean URL (25%):</strong> <code>https://techlandbd.com/</code> Direct clean URL placement.</li>
+                  <li><span class="check-icon">✓</span> <strong>In-Article Contextual Links (25%):</strong> Editorial in-content contextual link.</li>
+                  <li><span class="check-icon">✓</span> <strong>Deep-Page Product Links (20%):</strong> Category or product landing page link.</li>
+                  <li><span class="check-icon">✓</span> <strong>Business Directory &amp; Profile Listings:</strong> Complete brand profile with citations and contact details.</li>
+                </ul>
+              </div>
+
+              <div class="form-group">
+                <label><strong>📊 Real-Time Multi-Channel Reporting:</strong></label>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; font-size:0.83rem; color:#334155; line-height:1.5;">
+                  ✔️ <strong>User Dashboard:</strong> Won Links Tracker with live status and DA audit.<br>
+                  ✔️ <strong>Tools Inbox:</strong> AI classifier monitoring publisher reply sentiment.<br>
+                  ✔️ <strong>Email PDF Dispatch:</strong> Direct dispatch of white-label executive PDF reports to client emails.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 12: SUBSCRIPTION & BILLING HUB -->
+      <section class="tab-pane" id="saas-tab">
+        <!-- Active Subscription Overview -->
+        <div class="saas-hero-banner" style="background:#f8fafc; border:1px solid #e2e8f0;">
+          <div class="saas-hero-text">
+            <h2 style="color:#0f172a; font-size:1.3rem;">💳 Subscription Plans & Account Billing</h2>
+            <p style="color:#64748b;">Manage your active subscription, upgrade tiers, recharge AI backlink credits, and view billing invoices.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="alert('Your current plan is Growth Pro ($99/mo). Auto-renewal date: Oct 25, 2026.')">
+              ⚡ Manage Active Subscription
+            </button>
+          </div>
+        </div>
+
+        <!-- Subscriber Usage & Credit Meter -->
+        <div class="saas-stats-strip">
+          <div class="saas-stat-box">
+            <div class="saas-stat-label">📦 Current Active Plan</div>
+            <div class="saas-stat-val" id="saas-tab-plan-name" style="color:#2563eb;">Starter Free Trial</div>
+            <div class="saas-stat-sub" id="saas-tab-plan-sub" style="color:#059669;">● 10 Free Trial Credits</div>
+          </div>
+          <div class="saas-stat-box">
+            <div class="saas-stat-label">⚡ AI Outreach Credits</div>
+            <div class="saas-stat-val" id="saas-tab-credits-val">10 / 10</div>
+            <div class="saas-stat-sub" id="saas-tab-credits-sub">0 Credits Used this cycle</div>
+          </div>
+          <div class="saas-stat-box">
+            <div class="saas-stat-label">🌐 Connected Websites</div>
+            <div class="saas-stat-val" id="saas-tab-sites-val">1 / 1 Site</div>
+            <div class="saas-stat-sub" id="saas-tab-sites-sub">Techland BD (Active)</div>
+          </div>
+          <div class="saas-stat-box">
+            <div class="saas-stat-label">🏆 Live DoFollow Links Won</div>
+            <div class="saas-stat-val" id="saas-tab-links-won" style="color:#059669;">10 Won</div>
+            <div class="saas-stat-sub">HTTP 200 OK Live Verified</div>
+          </div>
+        </div>
+
+        <!-- Testing & Developer Controls for SaaS Paywall -->
+        <div style="margin-bottom: 20px; padding: 12px 18px; background: #fffbeb; border: 1.5px solid #fef3c7; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <strong style="color: #92400e; font-size: 0.88rem;">🧪 SaaS Commercial Testing Controls:</strong>
+            <span style="color: #b45309; font-size: 0.82rem; margin-left: 6px;">Test the commercial paywall and credit gating:</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-sm btn-outline" onclick="simulateExhaustCredits()" style="border-color:#f87171; color:#dc2626; font-weight:700;">
+              ⚠️ Set Credits to 0 (Test Paywall)
+            </button>
+            <button class="btn btn-sm btn-secondary" onclick="resetDemoCreditsForTesting()" style="border-color:#d97706; color:#92400e; font-weight:700;">
+              🔄 Reset to 10 Credits
+            </button>
+            <button class="btn btn-sm btn-primary" onclick="openUpgradeModal()" style="font-weight:700;">
+              ⚡ View Pricing Paywall
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Turnkey SaaS Pricing Tiers -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h3>📦 Available Subscription Plans &amp; Upgrades</h3>
+              <p class="hint">Choose the tier that matches your backlink volume and client requirements. Upgrade or change anytime.</p>
+            </div>
+            <span class="badge badge-live">Flexible Billing</span>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Starter Tier -->
+            <div class="pricing-card">
+              <div class="pricing-badge">Starter Tier</div>
+              <h3 class="pricing-title">Solo / Small Biz</h3>
+              <div class="pricing-price-wrap">
+                <span class="pricing-amount">$39</span>
+                <span class="pricing-period">/ month</span>
+              </div>
+              <div class="pricing-bdt">Billed monthly</div>
+              <p class="pricing-desc">Perfect for blogs, startups, and new websites building baseline authority.</p>
+              <ul class="pricing-features-list">
+                <li><span class="check-icon">✓</span> <strong>1 Connected Website</strong> / campaign</li>
+                <li><span class="check-icon">✓</span> <strong>50 Directory Submissions</strong> (50 Credits)</li>
+                <li><span class="check-icon">✓</span> <strong>25 AI Outreach Drafts</strong> / month</li>
+                <li><span class="check-icon">✓</span> Basic Dashboard &amp; DoFollow Tracker</li>
+                <li><span class="check-icon">✓</span> Email &amp; Chat Support</li>
+              </ul>
+              <button class="btn btn-outline" onclick="openUpgradeModal('starter')">
+                💳 Choose Starter ($39)
+              </button>
+            </div>
+
+            <!-- Pro Growth (Featured) -->
+            <div class="pricing-card featured">
+              <div class="pricing-ribbon">Most Popular</div>
+              <div class="pricing-badge">Growth Pro</div>
+              <h3 class="pricing-title">E-Commerce &amp; Pro</h3>
+              <div class="pricing-price-wrap">
+                <span class="pricing-amount">$99</span>
+                <span class="pricing-period">/ month</span>
+              </div>
+              <div class="pricing-bdt">Billed monthly</div>
+              <p class="pricing-desc">For growing businesses, local brands &amp; e-commerce demanding top Google rankings.</p>
+              <ul class="pricing-features-list">
+                <li><span class="check-icon">✓</span> <strong>3 Connected Websites</strong> / management</li>
+                <li><span class="check-icon">✓</span> <strong>110 Full Directory &amp; Merchant</strong> Submissions (200 Credits)</li>
+                <li><span class="check-icon">✓</span> <strong>Competitor Backlink Gap Scanner</strong></li>
+                <li><span class="check-icon">✓</span> Broken Link &amp; Mention Hunter</li>
+                <li><span class="check-icon">✓</span> <strong>1-Click Telegram Approval Bot</strong></li>
+                <li><span class="check-icon">✓</span> <strong>100 High-DA Outreach Pitches</strong> / month</li>
+                <li><span class="check-icon">✓</span> Priority Support</li>
+              </ul>
+              <button class="btn btn-primary" onclick="openUpgradeModal('growth_pro')">
+                ⚡ Choose Growth Pro ($99)
+              </button>
+            </div>
+
+            <!-- Agency Tier -->
+            <div class="pricing-card">
+              <div class="pricing-badge">Agency White-Label</div>
+              <h3 class="pricing-title">Digital Agencies</h3>
+              <div class="pricing-price-wrap">
+                <span class="pricing-amount">$249</span>
+                <span class="pricing-period">/ month</span>
+              </div>
+              <div class="pricing-bdt">Billed monthly</div>
+              <p class="pricing-desc">For digital agencies scaling link acquisition across multiple client accounts.</p>
+              <ul class="pricing-features-list">
+                <li><span class="check-icon">✓</span> <strong>Unlimited Client Campaigns</strong> (1,000 Credits)</li>
+                <li><span class="check-icon">✓</span> <strong>White-Label Client PDF Reports</strong></li>
+                <li><span class="check-icon">✓</span> Dedicated Outreach Email Domain (Isolated sending)</li>
+                <li><span class="check-icon">✓</span> <strong>500 AI Outreach Pitches</strong> / month</li>
+                <li><span class="check-icon">✓</span> Custom Team Permissions (Sub-accounts)</li>
+                <li><span class="check-icon">✓</span> Dedicated 1-on-1 Strategy Calls</li>
+              </ul>
+              <button class="btn btn-outline" onclick="openUpgradeModal('agency')">
+                👑 Choose Agency ($249)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col mb-4">
+          <!-- Payment Gateway Setup -->
+          <div class="card">
+            <div class="card-header">
+              <h3>💳 Supported Payment Gateways</h3>
+            </div>
+            <div class="card-body">
+              <div class="gateway-cards-grid">
+                <div class="gateway-card">
+                  <div class="gateway-icon">📱</div>
+                  <div class="gateway-info">
+                    <h4>Direct Cards &amp; Stripe</h4>
+                    <p>Instant digital payment processing with automated credit recharge and verification.</p>
+                  </div>
+                </div>
+
+                <div class="gateway-card">
+                  <div class="gateway-icon">🍋</div>
+                  <div class="gateway-info">
+                    <h4>Lemon Squeezy / Paddle (MoR)</h4>
+                    <p>Global card payments and merchant of record handling compliance, invoices, and taxation.</p>
+                  </div>
+                </div>
+
+                <div class="gateway-card">
+                  <div class="gateway-icon">🏦</div>
+                  <div class="gateway-info">
+                    <h4>Regional Digital Wallets</h4>
+                    <p>Regional cards and mobile banking gateways (Visa, MasterCard, bKash, Nagad, etc.).</p>
+                  </div>
+                </div>
+
+                <div class="gateway-card">
+                  <div class="gateway-icon">💳</div>
+                  <div class="gateway-info">
+                    <h4>Recurring Subscription Billing</h4>
+                    <p>Automated monthly renewal and subscription invoices for international clients.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subscriber Billing Invoices & Receipts -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📄 Billing History &amp; Invoices</h3>
+              <span class="badge badge-live">Official Receipts</span>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="data-table" style="font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th>Invoice ID</th>
+                      <th>Plan Description</th>
+                      <th>Amount</th>
+                      <th>Method</th>
+                      <th>Status</th>
+                      <th>Receipt</th>
+                    </tr>
+                  </thead>
+                  <tbody id="saas-invoices-tbody">
+                    <tr>
+                      <td><code>INV-2026-0925</code></td>
+                      <td><strong>Growth Pro Tier (Monthly)</strong></td>
+                      <td><strong>$99.00 USD</strong></td>
+                      <td>Credit Card</td>
+                      <td><span class="badge badge-live">✓ Paid</span></td>
+                      <td><button class="btn btn-sm btn-outline" onclick="alert('Downloading Receipt for INV-2026-0925 (Techland BD)...')">📄 PDF</button></td>
+                    </tr>
+                    <tr>
+                      <td><code>INV-2026-0825</code></td>
+                      <td>Starter Tier Plan</td>
+                      <td>$39.00 USD</td>
+                      <td>Digital Wallet</td>
+                      <td><span class="badge badge-live">✓ Paid</span></td>
+                      <td><button class="btn btn-sm btn-outline" onclick="alert('Downloading Receipt for INV-2026-0825 (Techland BD)...')">📄 PDF</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing Security & FAQ Notice -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3>🔒 Secure Billing & Subscription Terms</h3>
+            <span class="badge badge-ready">256-Bit SSL Encrypted</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2col">
+              <ul class="checklist-items">
+                <li><span class="check-icon">✓</span> <strong>Instant Activation:</strong> Upon completing bKash or card checkout, your credits unlock instantly.</li>
+                <li><span class="check-icon">✓</span> <strong>Permanent Backlinks:</strong> Acquired DoFollow links remain live on publisher platforms permanently.</li>
+              </ul>
+              <ul class="checklist-items">
+                <li><span class="check-icon">✓</span> <strong>Cancel Anytime:</strong> No lock-in contracts. You can pause or cancel your subscription at any time with 1-click.</li>
+                <li><span class="check-icon">✓</span> <strong>Invoice Support:</strong> Official VAT/AIT tax invoices are generated automatically for corporate accounts.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SAAS COMMERCIAL PAYWALL & UPGRADE MODAL   -->
+  <!-- ========================================== -->
+  <div id="saas-upgrade-modal" class="saas-modal-backdrop" onclick="if(event.target === this) closeUpgradeModal()">
+    <div class="saas-modal-card">
+      <button class="saas-modal-close" onclick="closeUpgradeModal()" title="Close">✕</button>
+
+      <div class="saas-modal-header">
+        <div id="paywall-exhausted-alert" class="paywall-alert-strip" style="display:none;">
+          <span style="font-size:1.6rem; line-height:1;">⚠️</span>
+          <div>
+            <div style="font-size:1rem; font-weight:800; color:#b91c1c;">Free Trial Limit Reached (10/10 Credits Used)</div>
+            <div style="font-size:0.82rem; color:#991b1b; font-weight:500;">
+              You have utilized your 10 complimentary trial credits. Choose a plan below to unlock all 100+ platforms and continue scaling backlinks.
+            </div>
+          </div>
+        </div>
+
+        <div style="display:inline-flex; align-items:center; gap:8px; background:#eff6ff; border:1px solid #bfdbfe; color:#1d4ed8; padding:4px 14px; border-radius:999px; font-size:0.8rem; font-weight:700; margin-bottom:10px;">
+          <span>⚡ Agent Naser PRO Subscription</span>
+        </div>
+        <h2 style="font-size:1.55rem; color:#0f172a; font-weight:800; margin-bottom:6px;">
+          Choose Your Plan &amp; Scale Backlinks
+        </h2>
+        <p style="color:#64748b; font-size:0.88rem; max-width:620px; margin:0 auto;">
+          Unlock high-authority DoFollow backlink opportunities, directories, and top Google rankings.
+        </p>
+      </div>
+
+      <div class="saas-modal-body">
+        <!-- 3 Plan Selector Cards -->
+        <div class="plan-selection-grid">
+          <!-- Starter -->
+          <div class="plan-select-card" id="plan-card-starter" onclick="selectPlanForCheckout('starter')">
+            <div class="plan-radio-header">
+              <span class="plan-radio-title">Solo / Starter</span>
+              <input type="radio" name="selected_saas_plan" id="radio-plan-starter" value="starter">
+            </div>
+            <div class="plan-price-tag">$39 <small style="font-size:0.8rem; color:#64748b;">/ mo</small></div>
+            <div class="plan-bdt-tag">Billed monthly</div>
+            <ul class="plan-features-mini">
+              <li>✓ <strong>50 Backlink Credits</strong> (+50)</li>
+              <li>✓ 1 Connected Website</li>
+              <li>✓ 50 Directory Submissions</li>
+              <li>✓ Basic DoFollow Tracker</li>
+            </ul>
+            <div style="font-size:0.75rem; text-align:center; color:#2563eb; font-weight:700;">Click to Select</div>
+          </div>
+
+          <!-- Growth Pro (Default Featured) -->
+          <div class="plan-select-card featured-card selected" id="plan-card-growth_pro" onclick="selectPlanForCheckout('growth_pro')">
+            <div style="position:absolute; top:-12px; right:16px; background:#2563eb; color:#fff; font-size:0.68rem; font-weight:800; padding:2px 10px; border-radius:999px; letter-spacing:0.5px;">MOST POPULAR</div>
+            <div class="plan-radio-header">
+              <span class="plan-radio-title">Growth Pro Tier</span>
+              <input type="radio" name="selected_saas_plan" id="radio-plan-growth_pro" value="growth_pro" checked>
+            </div>
+            <div class="plan-price-tag">$99 <small style="font-size:0.8rem; color:#64748b;">/ mo</small></div>
+            <div class="plan-bdt-tag">Billed monthly</div>
+            <ul class="plan-features-mini">
+              <li>✓ <strong>200 Backlink Credits</strong> (+200)</li>
+              <li>✓ 3 Connected Websites</li>
+              <li>✓ 110 Tech Directory Submissions</li>
+              <li>✓ Competitor Gap Scanner</li>
+              <li>✓ 1-Click Telegram Approval Bot</li>
+            </ul>
+            <div style="font-size:0.75rem; text-align:center; color:#1d4ed8; font-weight:800;">★ Recommended Choice</div>
+          </div>
+
+          <!-- Agency -->
+          <div class="plan-select-card" id="plan-card-agency" onclick="selectPlanForCheckout('agency')">
+            <div class="plan-radio-header">
+              <span class="plan-radio-title">Agency White-Label</span>
+              <input type="radio" name="selected_saas_plan" id="radio-plan-agency" value="agency">
+            </div>
+            <div class="plan-price-tag">$249 <small style="font-size:0.8rem; color:#64748b;">/ mo</small></div>
+            <div class="plan-bdt-tag">Billed monthly</div>
+            <ul class="plan-features-mini">
+              <li>✓ <strong>1,000 Backlink Credits</strong> (+1000)</li>
+              <li>✓ Unlimited Client Campaigns</li>
+              <li>✓ White-Label Client PDF Reports</li>
+              <li>✓ Dedicated Outreach Email Domain</li>
+              <li>✓ Priority 1-on-1 Support</li>
+            </ul>
+            <div style="font-size:0.75rem; text-align:center; color:#2563eb; font-weight:700;">Click to Select</div>
+          </div>
+        </div>
+
+        <!-- Checkout / Payment Drawer -->
+        <div class="checkout-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+            <div>
+              <strong style="color:#0f172a; font-size:1rem;">Payment Method &amp; Activation:</strong>
+              <div style="font-size:0.82rem; color:#64748b;">Selected Plan: <strong id="checkout-selected-plan-text" style="color:#2563eb;">Growth Pro ($99/mo)</strong></div>
+            </div>
+            <span class="badge badge-live">Instant Activation</span>
+          </div>
+
+          <!-- Gateway Selector -->
+          <div class="payment-gateways-row">
+            <div class="gateway-chip active" id="gw-bkash" onclick="selectGateway('bkash')">
+              <span>📱</span> <span>Digital Wallet</span>
+            </div>
+            <div class="gateway-chip" id="gw-nagad" onclick="selectGateway('nagad')">
+              <span>💳</span> <span>Direct Card</span>
+            </div>
+            <div class="gateway-chip" id="gw-card" onclick="selectGateway('card')">
+              <span>🌐</span> <span>Visa / Master Card</span>
+            </div>
+          </div>
+
+          <!-- Payment Instructions -->
+          <div class="gateway-instruction-box" id="gateway-instruction">
+            <strong>Payment Instructions:</strong><br>
+            1. Complete payment to merchant account or enter card details.<br>
+            2. Amount: <strong id="checkout-amount-text">$99.00 USD</strong> (Reference: Your Website).<br>
+            3. Enter your transaction reference code below and click confirm to activate.
+          </div>
+
+          <!-- TrxID Input & Submit Button -->
+          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px;">
+            <div style="flex:1; min-width:220px;">
+              <input type="text" id="upgrade-trx-id" placeholder="Enter Transaction ID / Ref (e.g. 9X7B2149)" style="width:100%; padding:10px 14px; border:1.5px solid #cbd5e1; border-radius:10px; font-size:0.9rem; font-family:monospace; font-weight:700;">
+            </div>
+            <button class="btn btn-primary" id="btn-submit-upgrade" onclick="submitSubscriptionUpgrade()" style="padding:10px 20px; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:6px;">
+              <span>✅</span> <span>Confirm Payment &amp; Unlock Credits</span>
+            </button>
+          </div>
+
+          <!-- Quick Test / Instant Demo Activation Bar -->
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #e2e8f0; padding-top:14px; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:0.82rem; color:#64748b;">Want to test without a transaction?</span>
+              <button class="btn btn-sm btn-outline" onclick="instantDemoUpgrade()" style="font-size:0.78rem; font-weight:700; color:#059669; border-color:#10b981; background:#ecfdf5;">
+                🚀 Instant Test Upgrade (1-Click Demo)
+              </button>
+            </div>
+            <a href="https://wa.me/8801701663999?text=Hello%20Agent%20Naser%2C%20I%20want%20to%20upgrade%20my%20Backlink%20Agent%20SaaS%20Plan" target="_blank" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; color:#059669;">
+              <span>💬 Priority Support (+8801701663999) ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/login", "dest": "/login.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
