@@ -4,7 +4,8 @@
   "description": "Agent Naser PRO: Autonomous White-Hat Backlink & Digital PR SaaS Platform",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'Build complete'"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,5 +1,9 @@
 [build]
+  command = "echo 'Build successful'"
   publish = "public"
+
+[build.environment]
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/*"
